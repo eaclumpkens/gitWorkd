@@ -9,7 +9,7 @@ function Main() {
     console.log("Setting up Webservice");
 
     app = express();
-    app.use(express.static("res"));
+    app.use(express.static("public"));
 
     app.use(express.json()); // for parsing application/json
     app.use(express.urlencoded({
