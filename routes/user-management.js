@@ -21,9 +21,8 @@ module.exports = function(app) {
             code: code
         }
         axios.post(GITHUB_AUTH_URL, params).then((response) => {
-            console.log(response.access_token);
-            console.log(response.token_type);
-            res.send(200);
+            console.log(response);
+            res.status(200);
             res.send("It worked!!!!1!!!");
         }).catch((err) => {
             console.log("Error Authenticating User");
