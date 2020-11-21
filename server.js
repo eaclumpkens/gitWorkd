@@ -16,6 +16,8 @@ function Main() {
         extended: true
     })); // for parsing application/x-www-form-urlencoded
 
+    var exphbs = require("express-handlebars");
+
     app.engine("handlebars", exphbs({
         defaultLayout: "main"
     }));
