@@ -1,0 +1,39 @@
+.jumbotron{
+    margin-top: 10rem;
+    background-color: 	rgba(214, 125, 23, 0.925);
+    border-radius: 1rem;
+}
+
+.logo{
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+   
+}
+
+body{
+    background: url("../img/landing.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.connect-btn{
+    font-weight: bold;
+    background-color: rgb(226, 195, 19);
+    padding: 1rem;
+    color: black;
+    border-radius: 1rem;
+    display: inline-block;
+    margin-top: 1rem;
+    width: 50%;
+    transition: .2s ease-in;
+    
+
+}
+
+.connect-btn:hover{
+    text-decoration: none;
+    color: black;
+    transform: scale(1.1);
+}
+
