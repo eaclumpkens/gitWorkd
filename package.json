@@ -11,6 +11,9 @@
         "type": "git",
         "url": "git+https://github.com/eaclumpkens/gitWorkd.git"
     },
+    "engines": {
+        "node": "14.x"
+    },
     "author": "eaclumpkens cmoorelvt twkirkpatrick nickelme",
     "license": "ISC",
     "bugs": {
