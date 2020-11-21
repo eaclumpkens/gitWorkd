@@ -6,6 +6,8 @@
 // =============================================================
 var path = require("path");
 
+const SIGN_UP_URL = "https://github.com/login/oauth/authorize?scope=user:email&client_id=";
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -14,7 +16,10 @@ module.exports = function(app) {
 
     // index route loads view.html
     app.get("/", function(req, res) {
-
+        var linkurl = SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
+        res.render("signup", {
+            link: linkurl
+        })
     });
 
 };

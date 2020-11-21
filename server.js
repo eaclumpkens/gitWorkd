@@ -16,6 +16,11 @@ function Main() {
         extended: true
     })); // for parsing application/x-www-form-urlencoded
 
+    app.engine("handlebars", exphbs({
+        defaultLayout: "main"
+    }));
+    app.set("view engine", "handlebars");
+
     require("./routes/html-routes.js")(app);
     require("./routes/user-management.js")(app);
 
