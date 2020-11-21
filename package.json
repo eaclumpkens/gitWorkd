@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "gitworkd",
   "version": "1.0.0",
   "description": "university of richmond project two; full-stack",
@@ -27,3 +28,32 @@
     "uuidv4": "^6.2.5"
   }
 }
+=======
+    "name": "gitworkd",
+    "version": "1.0.0",
+    "description": "university of richmond project two; full-stack",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eaclumpkens/gitWorkd.git"
+    },
+    "author": "eaclumpkens cmoorelvt twkirkpatrick nickelme",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/eaclumpkens/gitWorkd/issues"
+    },
+    "homepage": "https://github.com/eaclumpkens/gitWorkd#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "mysql2": "^2.2.5",
+        "sequelize": "6.3.5",
+        "uuidv4": "^6.2.5",
+        "axios": "^0.21.0"
+    }
+}
+>>>>>>> 0c07e6cb339bc044632fd7e3f11f17b8fe3158ea
