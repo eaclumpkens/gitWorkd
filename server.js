@@ -3,16 +3,21 @@ const PORT = process.env.PORT || 8080;
 
 var app;
 
+var db = require("./models");
+
 function Main() {
     console.log("Setting up Webservice");
 
     app = express();
-    app.use(express.static("res"));
+    app.use(express.static("public"));
 
     app.use(express.json()); // for parsing application/json
     app.use(express.urlencoded({
         extended: true
     })); // for parsing application/x-www-form-urlencoded
+
+    require("./routes/html-routes.js")(app);
+    require("./routes/user-management.js")(app);
 
     app.get("/api/gitRecieved", (req, res) => {
         var code = req.query.code;
@@ -25,9 +30,14 @@ function Main() {
         }
     });
 
-    app.listen(PORT, () => {
-        console.log(`Now Running at http://localhost:${PORT}`);
+    db.sequelize.sync({
+        force: true
+    }).then(function() {
+        app.listen(PORT, function() {
+            console.log("App listening on PORT " + PORT);
+        });
     });
+
 }
 
 Main();
