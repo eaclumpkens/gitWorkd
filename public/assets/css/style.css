@@ -1,31 +1,43 @@
 .jumbotron{
-    margin-top: 10rem;
-    background-color: 	rgba(214, 125, 23, 0.925);
+    margin-top: 4rem;
+    background:none;
     border-radius: 1rem;
 }
 
 .logo{
     font-family: 'Permanent Marker', cursive;
     color: black;
+    font-size: 4rem;
    
 }
 
 body{
-    background: url("../img/landing.jpg") no-repeat center center fixed;
+    background: url("../img/ponder.jpg") no-repeat center center fixed;
     background-size: cover;
     color: black;
-    font-family: 'Fira Sans', sans-serif;
+    
+}
+
+.github{
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+p{
+    color: rgb(19, 14, 14);
+    font-weight: bolder !important;
+    font-size: 1rem !important;
 }
 
 .connect-btn{
     font-weight: bold;
-    background-color: rgb(226, 195, 19);
-    padding: 1rem;
-    color: black;
-    border-radius: 1rem;
+    background-color: #000000;
+    padding: 10px;
+    color: rgb(196, 184, 184);
+    border-radius: 6px;
     display: inline-block;
     margin-top: 1rem;
-    width: 50%;
+    width: 30%;
     transition: .2s ease-in;
     
 
@@ -33,7 +45,8 @@ body{
 
 .connect-btn:hover{
     text-decoration: none;
-    color: black;
+    color: rgb(214, 197, 197);
     transform: scale(1.1);
+    background-color: rgb(51, 49, 48);
 }
 
