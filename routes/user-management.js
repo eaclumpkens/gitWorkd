@@ -49,13 +49,12 @@ module.exports = function(app) {
                         cookie: newCookie,
                         cookieCreated: cookieCreationDate
                     }
-                }).then((user) => {
-                    console.log(user);
-                    res.cookie("uuid", user.cookie, {
+                }).then((dbReturn) => {
+                    res.cookie("uuid", dbReturn[0].dataValues.cookie, {
                         maxAge: MAX_LOGIN_TIME
                     });
                     res.status(200);
-                    if (created) {
+                    if (user[1]) {
                         console.log("Created New User");
                         res.send("Welcome new User: " + gitUser.data.name);
                     } else {
