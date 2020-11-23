@@ -1,4 +1,5 @@
 const express = require('express');
+var cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8080;
 
 var app;
@@ -15,6 +16,8 @@ function Main() {
     app.use(express.urlencoded({
         extended: true
     })); // for parsing application/x-www-form-urlencoded
+    app.use(cookieParser()); //Used for parsing Cookies
+
 
     var exphbs = require("express-handlebars");
 
