@@ -1,10 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-    var Swipes = sequelize.define("Swipes", {
-        match_rank: DataTypes.INTEGER,
-        username: DataTypes.STRING,
-        languages: DataTypes.TEXT,
-        profile_URL: DataTypes.STRING
+    var Swipe = sequelize.define("Swipe", {
+        match_percent: DataTypes.INTEGER
     });
 
-    return Swipes;
+
+    Swipe.associate = function(models) {
+
+        Swipe.hasOne(models.User, {
+            onDelete: null
+        });
+    }
+
+    return Swipe;
 };
