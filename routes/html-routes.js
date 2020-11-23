@@ -29,7 +29,7 @@ module.exports = function(app) {
                 if (loggedUser) {
                     var header = {
                         headers: {
-                            "Authorization": `token ${loggedUser[0].dataValues.accessToken}`
+                            "Authorization": `token ${loggedUser.dataValues.accessToken}`
                         }
                     }
                     axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
