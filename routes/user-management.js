@@ -4,8 +4,8 @@ var path = require("path");
 var db = require("../models");
 var axios = require("axios");
 const {
-    UUIDV4
-} = require("sequelize");
+    uuid
+} = require('uuidv4');
 const {
     result
 } = require("lodash");
@@ -40,7 +40,7 @@ module.exports = function(app) {
             }
             axios.get(GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
-                var newCookie = UUIDV4().toString();
+                var newCookie = UUIDV4();
                 var cookieCreationDate = Date.now();
                 db.User.findOrCreate({
                     where: {
