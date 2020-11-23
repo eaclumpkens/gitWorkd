@@ -7,11 +7,7 @@ const {
     v4: uuidv4
 } = require('uuid');
 
-const GITHUB_AUTH_URL = "https://github.com/login/oauth/access_token";
-const GITHUB_USER_URL = "https://api.github.com/user"
-
-//30 min * 60 secs * 1000ms to get 30min in ms
-const MAX_LOGIN_TIME = 30 * 60 * 1000;
+const consts = require("../utils/consts");
 
 // Routes
 // =============================================================
@@ -27,7 +23,7 @@ module.exports = function(app) {
             client_id: process.env.GITHUB_CLIENT_ID,
             code: code
         }
-        axios.post(GITHUB_AUTH_URL, params).then((response) => {
+        axios.post(consts.GITHUB_AUTH_URL, params).then((response) => {
             var access_token = response.data.substring(response.data.indexOf("=") + 1, response.data.indexOf("&"));
             console.log("Access Token: " + access_token);
             var header = {
@@ -35,7 +31,7 @@ module.exports = function(app) {
                     "Authorization": `token ${access_token}`
                 }
             }
-            axios.get(GITHUB_USER_URL, header).then((gitUser) => {
+            axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
                 var newCookie = uuidv4();
                 var cookieCreationDate = Date.now();
@@ -44,14 +40,13 @@ module.exports = function(app) {
                         githubId: gitUser.data.id
                     },
                     defaults: {
-                        name: gitUser.data.name,
                         accessToken: access_token,
                         cookie: newCookie,
                         cookieCreated: cookieCreationDate
                     }
                 }).then((dbReturn) => {
                     res.cookie("uuid", dbReturn[0].dataValues.cookie, {
-                        maxAge: MAX_LOGIN_TIME
+                        maxAge: consts.MAX_LOGIN_TIME
                     });
                     res.status(200);
                     if (dbReturn[1]) {

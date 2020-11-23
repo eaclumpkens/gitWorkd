@@ -5,6 +5,8 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+const db = require("../models");
+const consts = require("../utils/consts")
 
 const SIGN_UP_URL = "https://github.com/login/oauth/authorize?scope=user:email&client_id=";
 
@@ -17,10 +19,41 @@ module.exports = function(app) {
     // index route loads view.html
     app.get("/", function(req, res) {
         console.log('Cookies: ', req.cookies);
-        var linkurl = SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
-        res.render("signup", {
-            link: linkurl
-        })
+        if (req.cookies.uuid) {
+            db.User.findOne({
+                where: {
+                    cookie: req.cookies.uuid
+                }
+            }).then((loggedUser) => {
+                console.log(loggedUser);
+                if (loggedUser.length > 0) {
+                    var header = {
+                        headers: {
+                            "Authorization": `token ${loggedUser[0].dataValues.accessToken}`
+                        }
+                    }
+                    axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
+                        res.status(200);
+                        res.send("Weclome back " + gitUser.data.name);
+                    }).catch((moo) => {
+                        var linkurl = consts.SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
+                        res.render("signup", {
+                            link: linkurl
+                        });
+                    });
+                } else {
+                    var linkurl = consts.SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
+                    res.render("signup", {
+                        link: linkurl
+                    });
+                }
+            });
+        } else {
+            var linkurl = consts.SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
+            res.render("signup", {
+                link: linkurl
+            });
+        }
     });
 
 };
