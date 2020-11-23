@@ -26,7 +26,7 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
                 console.log(loggedUser);
-                if (loggedUser.length > 0) {
+                if (loggedUser) {
                     var header = {
                         headers: {
                             "Authorization": `token ${loggedUser[0].dataValues.accessToken}`
