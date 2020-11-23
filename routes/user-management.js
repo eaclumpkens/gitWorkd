@@ -51,6 +51,7 @@ module.exports = function(app) {
                         cookieCreated: Date.now()
                     }
                 }).then((user, created) => {
+                    console.log(user.cookie);
                     res.cookie("uuid", user.cookie, {
                         maxAge: MAX_LOGIN_TIME
                     });
