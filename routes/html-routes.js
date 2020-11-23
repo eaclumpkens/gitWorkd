@@ -16,6 +16,7 @@ module.exports = function(app) {
 
     // index route loads view.html
     app.get("/", function(req, res) {
+        console.log('Cookies: ', req.cookies);
         var linkurl = SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
         res.render("signup", {
             link: linkurl
