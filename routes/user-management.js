@@ -40,7 +40,7 @@ module.exports = function(app) {
             }
             axios.get(GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
-                var newCookie = UUIDV4();
+                var newCookie = UUIDV4().toString();
                 var cookieCreationDate = Date.now();
                 db.User.findOrCreate({
                     where: {
