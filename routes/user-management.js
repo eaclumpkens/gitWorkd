@@ -37,7 +37,7 @@ module.exports = function(app) {
             }
             axios.get(GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
-                var newCookie = uuid();
+                var newCookie = uuid.v4();
                 var cookieCreationDate = Date.now();
                 db.User.findOrCreate({
                     where: {
@@ -49,8 +49,8 @@ module.exports = function(app) {
                         cookie: newCookie,
                         cookieCreated: cookieCreationDate
                     }
-                }).then((user, created) => {
-                    console.log(user.cookie);
+                }).then((user) => {
+                    console.log(user);
                     res.cookie("uuid", user.cookie, {
                         maxAge: MAX_LOGIN_TIME
                     });
