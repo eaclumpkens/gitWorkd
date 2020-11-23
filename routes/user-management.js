@@ -54,7 +54,7 @@ module.exports = function(app) {
                         maxAge: MAX_LOGIN_TIME
                     });
                     res.status(200);
-                    if (user[1]) {
+                    if (dbReturn[1]) {
                         console.log("Created New User");
                         res.send("Welcome new User: " + gitUser.data.name);
                     } else {
