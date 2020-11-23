@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
         accessToken: DataTypes.STRING,
         githubId: DataTypes.BIGINT,
         cookie: DataTypes.STRING,
+        cookieCreated: DataTypes.DATE
     });
 
     User.associate = function(models) {
