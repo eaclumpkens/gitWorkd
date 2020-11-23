@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS getworkd_db;
-CREATE getworkd_db;
+DROP DATABASE IF EXISTS gitworkd_db;
+CREATE gitworkd_db;
