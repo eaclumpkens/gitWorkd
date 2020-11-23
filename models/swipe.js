@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
         Swipe.hasOne(models.Repo, {
             onDelete: null
         });
+
+        
     }
  
     return Swipe;
