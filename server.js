@@ -9,12 +9,19 @@ function Main() {
     console.log("Setting up Webservice");
 
     app = express();
-    app.use(express.static("res"));
+    app.use(express.static("public"));
 
     app.use(express.json()); // for parsing application/json
     app.use(express.urlencoded({
         extended: true
     })); // for parsing application/x-www-form-urlencoded
+
+    var exphbs = require("express-handlebars");
+
+    app.engine("handlebars", exphbs({
+        defaultLayout: "main"
+    }));
+    app.set("view engine", "handlebars");
 
     require("./routes/html-routes.js")(app);
     require("./routes/user-management.js")(app);

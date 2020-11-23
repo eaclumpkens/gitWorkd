@@ -1,0 +1,52 @@
+.jumbotron{
+    margin-top: 4rem;
+    background:none;
+    border-radius: 1rem;
+}
+
+.logo{
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+    font-size: 4rem;
+   
+}
+
+body{
+    background: url("../img/ponder.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    
+}
+
+.github{
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+p{
+    color: rgb(19, 14, 14);
+    font-weight: bolder !important;
+    font-size: 1rem !important;
+}
+
+.connect-btn{
+    font-weight: bold;
+    background-color: #000000;
+    padding: 10px;
+    color: rgb(196, 184, 184);
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 1rem;
+    width: 30%;
+    transition: .2s ease-in;
+    
+
+}
+
+.connect-btn:hover{
+    text-decoration: none;
+    color: rgb(214, 197, 197);
+    transform: scale(1.1);
+    background-color: rgb(51, 49, 48);
+}
+
