@@ -3,8 +3,18 @@
 var path = require("path");
 var db = require("../models");
 var axios = require("axios");
+const {
+    UUIDV4
+} = require("sequelize");
+const {
+    result
+} = require("lodash");
 
 const GITHUB_AUTH_URL = "https://github.com/login/oauth/access_token";
+const GITHUB_USER_URL = "https://api.github.com/user"
+
+//30 min * 60 secs * 1000ms to get 30min in ms
+const MAX_LOGIN_TIME = 30 * 60 * 1000;
 
 // Routes
 // =============================================================
@@ -21,9 +31,38 @@ module.exports = function(app) {
             code: code
         }
         axios.post(GITHUB_AUTH_URL, params).then((response) => {
-            console.log(response);
-            res.status(200);
-            res.send("It worked!!!!1!!!");
+            var access_token = response.data.substring(response.data.indexOf("="), response.indexOf("&"));
+            console.log("Access Token: " + access_token);
+            var header = {
+                headers: {
+                    "Authorization": `token ${access_token}`
+                }
+            }
+            axios.get(GITHUB_USER_URL, header).then((gitUser) => {
+                console.log(gitUser.data);
+                db.User.findOrCreate({
+                    where: {
+                        githubId: gitUser.data.id
+                    },
+                    defaults: {
+                        name: gitUser.data.name,
+                        accessToken: access_token,
+                        cookie: UUIDV4(),
+                        cookieCreated: Date.now()
+                    }
+                }).then((user, created) => {
+                    res.cookie("uuid", user.cookie, {
+                        maxAge: MAX_LOGIN_TIME
+                    });
+                    res.status(200);
+                    if (created) {
+                        console.log("Created New User");
+                        res.send("Welcome new User: " + gitUser.name);
+                    } else {
+                        res.send("Weclome back " + gitUser.name);
+                    }
+                });
+            });
         }).catch((err) => {
             console.log("Error Authenticating User");
             console.log(err);
