@@ -6,9 +6,6 @@ var axios = require("axios");
 const {
     uuid
 } = require('uuidv4');
-const {
-    result
-} = require("lodash");
 
 const GITHUB_AUTH_URL = "https://github.com/login/oauth/access_token";
 const GITHUB_USER_URL = "https://api.github.com/user"
@@ -40,7 +37,7 @@ module.exports = function(app) {
             }
             axios.get(GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
-                var newCookie = UUIDV4();
+                var newCookie = uuid();
                 var cookieCreationDate = Date.now();
                 db.User.findOrCreate({
                     where: {
