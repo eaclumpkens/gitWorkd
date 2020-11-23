@@ -60,9 +60,9 @@ module.exports = function(app) {
                     res.status(200);
                     if (created) {
                         console.log("Created New User");
-                        res.send("Welcome new User: " + gitUser.name);
+                        res.send("Welcome new User: " + gitUser.data.name);
                     } else {
-                        res.send("Weclome back " + gitUser.name);
+                        res.send("Weclome back " + gitUser.data.name);
                     }
                 });
             });
