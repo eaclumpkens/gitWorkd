@@ -31,7 +31,7 @@ module.exports = function(app) {
             code: code
         }
         axios.post(GITHUB_AUTH_URL, params).then((response) => {
-            var access_token = response.data.substring(response.data.indexOf("="), response.data.indexOf("&"));
+            var access_token = response.data.substring(response.data.indexOf("=") + 1, response.data.indexOf("&"));
             console.log("Access Token: " + access_token);
             var header = {
                 headers: {
