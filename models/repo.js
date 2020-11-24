@@ -22,6 +22,10 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        Repo.hasMany(models.Language, {
+            onDelete: "cascade"
+        });
     };
 
     return Repo;
