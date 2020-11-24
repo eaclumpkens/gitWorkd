@@ -21,12 +21,12 @@
     },
     "homepage": "https://github.com/eaclumpkens/gitWorkd#readme",
     "dependencies": {
+        "axios": "^0.21.0",
+        "cookie-parser": "^1.4.5",
         "express": "^4.17.1",
         "express-handlebars": "^5.2.0",
         "mysql2": "^2.2.5",
-        "sequelize": "^4.41.2",
-        "uuid": "^8.3.1",
-        "axios": "^0.21.0",
-        "cookie-parser": "^1.4.5"
+        "sequelize": "^4.44.4",
+        "uuid": "^8.3.1"
     }
 }
