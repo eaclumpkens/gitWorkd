@@ -25,7 +25,8 @@
         "express-handlebars": "^5.2.0",
         "mysql2": "^2.2.5",
         "sequelize": "^4.41.2",
-        "uuidv4": "^6.2.5",
-        "axios": "^0.21.0"
+        "uuid": "^8.3.1",
+        "axios": "^0.21.0",
+        "cookie-parser": "^1.4.5"
     }
 }

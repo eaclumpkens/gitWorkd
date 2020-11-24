@@ -3,8 +3,11 @@
 var path = require("path");
 var db = require("../models");
 var axios = require("axios");
+const {
+    v4: uuidv4
+} = require('uuid');
 
-const GITHUB_AUTH_URL = "https://github.com/login/oauth/access_token";
+const consts = require("../utils/consts");
 
 // Routes
 // =============================================================
@@ -20,10 +23,40 @@ module.exports = function(app) {
             client_id: process.env.GITHUB_CLIENT_ID,
             code: code
         }
-        axios.post(GITHUB_AUTH_URL, params).then((response) => {
-            console.log(response);
-            res.status(200);
-            res.send("It worked!!!!1!!!");
+        axios.post(consts.GITHUB_AUTH_URL, params).then((response) => {
+            var access_token = response.data.substring(response.data.indexOf("=") + 1, response.data.indexOf("&"));
+            console.log("Access Token: " + access_token);
+            var header = {
+                headers: {
+                    "Authorization": `token ${access_token}`
+                }
+            }
+            axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
+                console.log(gitUser.data);
+                var newCookie = uuidv4();
+                var cookieCreationDate = Date.now();
+                db.User.findOrCreate({
+                    where: {
+                        githubId: gitUser.data.id
+                    },
+                    defaults: {
+                        accessToken: access_token,
+                        cookie: newCookie,
+                        cookieCreated: cookieCreationDate
+                    }
+                }).then((dbReturn) => {
+                    res.cookie("uuid", dbReturn[0].dataValues.cookie, {
+                        maxAge: consts.MAX_LOGIN_TIME
+                    });
+                    res.status(200);
+                    if (dbReturn[1]) {
+                        console.log("Created New User");
+                        res.send("Welcome new User: " + gitUser.data.name);
+                    } else {
+                        res.send("Weclome back " + gitUser.data.name);
+                    }
+                });
+            });
         }).catch((err) => {
             console.log("Error Authenticating User");
             console.log(err);
