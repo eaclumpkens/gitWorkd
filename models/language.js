@@ -4,13 +4,5 @@ module.exports = function(sequelize, DataTypes) {
         percentage: DataTypes.INTEGER
     });
 
-
-    Language.associate = function(models) {
-        Language.belongsTo(models.Repo, {
-            onDelete: null
-        })
-
-    };
-
     return Language;
 }

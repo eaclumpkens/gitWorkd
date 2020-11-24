@@ -1,17 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
 
-    // User-to-User Compatability Score
+    // Repo-to-Repo  Compatability Score
     var Swipe = sequelize.define("Swipe", {
-        match_score: DataTypes.INTEGER
+        match_score: DataTypes.INTEGER,
     });
 
-    // Compatable Repository w/ FK to User
+    // Compatable Repository w/ FK to Repo
     Swipe.associate = function(models) {
         Swipe.hasOne(models.Repo, {
             onDelete: null
         });
 
-        
+
     }
  
     return Swipe;

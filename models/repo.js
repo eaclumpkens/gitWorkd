@@ -22,6 +22,11 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        // Associates languages used in repo
+        Repo.hasMany(models.Language, {
+                onDelete: "cascade"
+        });
     };
 
     return Repo;
