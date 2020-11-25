@@ -9,6 +9,23 @@ const {
 
 const consts = require("../utils/consts");
 
+function userRepos(user) {
+    var header = {
+        headers: {
+            "Authorization": `token ${user.accessToken}`
+        }
+    }
+
+    // axios.get(consts.GITHUB_REPO_URL, header).then((repositories) => {
+    //     var repos = repositories.data;
+
+    //     db.Repo.findOrCreate({
+    //         where
+    //     })
+
+    // })
+}
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -24,6 +41,7 @@ module.exports = function(app) {
                     //TODO: Get user Repos
                     res.render("AddRepo", {
                         //TODO: FILL WITH USEFULL INFORMATION EVENTUALLY SOMETIME
+
                     });
                 }
             });
