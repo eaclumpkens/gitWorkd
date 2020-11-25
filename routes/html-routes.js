@@ -43,7 +43,6 @@ module.exports = function(app) {
                         });
                     });
                 } else {
-                    console.log(gitUser.headers);
                     var linkurl = consts.SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
                     res.render("signup", {
                         link: linkurl
