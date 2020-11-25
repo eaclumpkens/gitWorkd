@@ -6,13 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     // Compatable Repository w/ FK to Repo
-    Swipe.associate = function(models) {
-        Swipe.hasOne(models.Repo, {
-            onDelete: null
-        });
 
 
-    }
- 
-    return Swipe;
+}
+
+return Swipe;
 };
