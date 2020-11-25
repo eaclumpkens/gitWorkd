@@ -32,6 +32,7 @@ module.exports = function(app) {
             }
             axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
+                console.log(gitUser.headers);
                 var newCookie = uuidv4();
                 var cookieCreationDate = Date.now();
                 db.User.findOrCreate({
