@@ -1,5 +1,11 @@
+var fs = require("fs");
+var path = require("path");
+const {
+    col
+} = require("sequelize");
+
 module.exports = function(sequelize, DataTypes) {
-    var Repo = sequelize.define("Repo", {
+    var colData = {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -11,8 +17,27 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
             len: [1]
-        }
+        },
+    };
+
+    var langs = fs.readFileSync("./languages.txt", {
+        encoding: 'utf8',
+        flag: 'r'
     });
+    var langarray = langs.split("\n");
+
+    for (var i = 0; i < langarray.length; i++) {
+        var lang = langarray[i];
+        lang.replaceAll(" ", "_");
+        colData[lang] = {
+            type: DataTypes.DECIMAL(3, 2),
+            allowNull: false,
+            default: 0
+        }
+    }
+
+
+    var Repo = sequelize.define("Repo", colData);
 
     Repo.associate = function(models) {
         // We're saying that a Post should belong to an Author
@@ -21,11 +46,6 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: {
                 allowNull: false
             }
-        });
-
-        // Associates languages used in repo
-        Repo.hasMany(models.Language, {
-                onDelete: "cascade"
         });
     };
 
