@@ -16,14 +16,32 @@ function userRepos(user) {
         }
     }
 
-    // axios.get(consts.GITHUB_REPO_URL, header).then((repositories) => {
-    //     var repos = repositories.data;
+    axios.get(consts.GITHUB_REPO_URL, header).then((repositories) => {
+        console.log(repositories);
+        var repo = repositories.data;
 
-    //     db.Repo.findOrCreate({
-    //         where
-    //     })
+        for (var i = 0; repos.length > i; i++) {
+            
+            db.Repo.findOrCreate({
+                where: {
+                    UserId: repo[i].owner.id
+                },
+                defaults: {
+                    title: repo[i].name,
+                    description: repo[i].description,
+                    share_status: repo[i].private
+                }
+            }).then(() => {
+                res.status(200);
+                console.log("Repos added");
+            })
+        }
 
-    // })
+    }).catch((err) => {
+        console.log("Error pulling user repos");
+        console.log(err);
+        res.status(404);
+    });
 }
 
 // Routes
