@@ -30,7 +30,7 @@ function Main() {
     require("./routes/user-management.js")(app);
 
     db.sequelize.sync({
-        force: true
+        force: false
     }).then(function() {
         app.listen(PORT, function() {
             console.log("App listening on PORT " + PORT);
