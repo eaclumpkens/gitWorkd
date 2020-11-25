@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 module.exports = function(sequelize, DataTypes) {
 
     var colData = {
