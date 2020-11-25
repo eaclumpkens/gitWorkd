@@ -52,6 +52,7 @@ module.exports = function(app) {
                     if (dbReturn[1]) {
                         console.log("Created New User");
                         res.send("Welcome new User: " + gitUser.data.name);
+                        populateProfencies();
                     } else {
                         res.send("Weclome back " + gitUser.data.name);
                     }
