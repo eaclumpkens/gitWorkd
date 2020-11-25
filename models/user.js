@@ -18,7 +18,6 @@ module.exports = function(sequelize, DataTypes) {
         if (lang == "") {
             continue;
         }
-        lang = lang.replace(/\s/g, "_");
         colData[lang] = {
             type: DataTypes.DECIMAL(3, 2),
             allowNull: false,
