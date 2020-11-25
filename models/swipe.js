@@ -7,8 +7,5 @@ module.exports = function(sequelize, DataTypes) {
 
     // Compatable Repository w/ FK to Repo
 
-
-}
-
-return Swipe;
+    return Swipe;
 };
