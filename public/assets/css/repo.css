@@ -1,0 +1,40 @@
+body{
+    background: url("../img/ponder.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    font-family: 'Big Shoulders Inline Text', cursive;
+}
+
+.main-nav{
+    font-family: 'Permanent Marker', cursive;
+    color: white !important;
+}
+
+.bg-dark{
+    background-color:rgb(14, 12, 12) !important;
+}
+
+.search-card{
+    margin-top: 12rem;
+}
+
+.card{
+    background-color: rgba(5, 5, 5, 0.938);
+    color: white;
+    
+}
+
+
+::placeholder{
+    font-size: 1rem;
+}
+
+.btn{
+    color: black;
+    font-weight: bolder;
+}
+
+.search-icon{
+    color: #212529;
+}
+

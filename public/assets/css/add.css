@@ -1,0 +1,66 @@
+body{
+    background: url("../img/ponder.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    font-family: 'Big Shoulders Inline Text', cursive;
+}
+
+.bg-dark{
+    background-color: rgb(0, 0, 0) !important;
+}
+
+a{
+    color: white !important;
+}
+
+a:hover{
+    color: grey !important;
+}
+
+.main-nav{
+    font-family: 'Permanent Marker', cursive;
+    color: white !important;
+}
+
+.jumbotron{
+    background: none;
+}
+
+.loader{
+    display:none; 
+    margin: 2rem auto;
+    background-color: rgb(0, 0, 0);
+
+}
+
+.loader-image{
+    background-color: rgb(0, 0, 0);
+    width: 40px;
+}
+
+.add-card{
+    color: rgb(158, 153, 153);
+    margin-top: 12rem;
+    background-color: rgb(0, 0, 0);
+    border: solid 1px rgb(228, 215, 215);
+    
+    
+}
+
+/* .add-card:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.548);
+}
+ */
+.hide{
+    display: none;
+}
+
+.add-btn{
+    background-color: rgba(0, 0, 0, 0.459);
+    color: white;
+}
+
+.card-title{
+    color: white;
+}
