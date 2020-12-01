@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         encoding: 'utf8',
         flag: 'r'
     });
+    
     var langarray = langs.split("\n");
 
     for (var i = 0; i < langarray.length; i++) {
