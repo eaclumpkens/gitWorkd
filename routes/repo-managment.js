@@ -20,12 +20,18 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
+
+                console.log(loggedUser);
                 if (loggedUser) {
-                    //TODO: Get user Repos
-                    res.render("AddRepo", {
-                        //TODO: FILL WITH USEFULL INFORMATION EVENTUALLY SOMETIME
-                    });
+                    
+                    axios.get(consts.GITHUB_REPO_URL, {
+                        params: {
+
+                        }
+                    })
+=
                 }
+
             });
         } else {
             //TODO REDIRECT TO MAIN

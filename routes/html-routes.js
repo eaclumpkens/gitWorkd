@@ -9,8 +9,6 @@ const db = require("../models");
 const consts = require("../utils/consts");
 var axios = require("axios");
 
-const SIGN_UP_URL = "https://github.com/login/oauth/authorize?scope=user:email&client_id=";
-
 // Routes
 // =============================================================
 module.exports = function(app) {

@@ -18,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
+        share_status: {
+            type: DataTypes.BOOLEAN,
+            default: false
+        }
     };
 
     var langs = fs.readFileSync("./languages.txt", {
@@ -41,15 +45,15 @@ module.exports = function(sequelize, DataTypes) {
 
     var Repo = sequelize.define("Repo", colData);
 
-    // Repo.associate = function(models) {
-    //     // We're saying that a Post should belong to an Author
-    //     // A Post can't be created without an Author due to the foreign key constraint
-    //     Repo.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Repo.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+        Repo.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     return Repo;
 };

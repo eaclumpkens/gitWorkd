@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 module.exports = function(sequelize, DataTypes) {
 
     var colData = {
@@ -11,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         encoding: 'utf8',
         flag: 'r'
     });
+    
     var langarray = langs.split("\n");
 
     for (var i = 0; i < langarray.length; i++) {
