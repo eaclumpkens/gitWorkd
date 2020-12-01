@@ -23,13 +23,12 @@ module.exports = function(app) {
 
                 console.log(loggedUser);
                 if (loggedUser) {
-                    
+
                     axios.get(consts.GITHUB_REPO_URL, {
                         params: {
 
                         }
                     })
-=
                 }
 
             });

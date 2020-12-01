@@ -32,6 +32,7 @@ module.exports = function(sequelize, DataTypes) {
 
     for (var i = 0; i < langarray.length; i++) {
         var lang = langarray[i];
+        lang = lang.replace(/./g, "_");
         if (lang == "") {
             continue;
         }
