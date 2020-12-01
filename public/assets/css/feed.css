@@ -1,0 +1,70 @@
+
+
+body{
+     background: url("../img/ponder.jpg") no-repeat center center fixed;
+    background-size: cover; 
+    color: black;
+    font-family: 'Big Shoulders Inline Text', cursive;
+    
+    
+}
+
+a{
+    color: white !important;
+}
+
+a:hover{
+    color: grey !important;
+}
+
+
+
+
+
+
+
+.repo-card{
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.959);
+    color: grey;
+    border: 1px solid white;
+    /* border-radius: 1rem; */
+    
+}
+
+.user-name{
+    color: black !important;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+.card-title{
+    color: white;
+}
+
+.compat{
+    color: green;
+}
+
+.compat-2{
+    color: red;
+}
+
+h5{
+    color: white;
+}
+
+
+
+
+.main-nav{
+    font-family: 'Permanent Marker', cursive;
+    color: white !important;
+}
+
+.bg-dark{
+    background-color:rgb(0, 0, 0) !important;
+}
+
