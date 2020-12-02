@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 
 
-    app.get("/profile", (req, res) =>  {
+    app.get("/api/user-repos", (req, res) =>  {
 
         if (req.cookies.uuid) {
             db.User.findOne({
@@ -32,11 +32,28 @@ module.exports = function(app) {
 
                     for (var i = 0; i < myRepos.length; i ++) {
                         var repo = myRepos[i];
-                        var repoLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
+                        var langLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
+                        var repoLink = `${consts.GITHUB_REPO_URL}/${repo}`;
 
-                        axios.get(repoLink).then((languages) => {
-                            console.log(languages.data);
+                        async function repoPull() {
+                            return axios.get(repoLink).then((repoData) => repoData.data);
+                        }
+
+                        async function langPull() {
+                            return axios.get(langLink).then((languages) => languages.data);
+                        };
+
+                        repoPull().then((response) => {
+
+                            console.log(response.data);
+
+                            langpull().then((res) => {
+                                console.log(res);
+                            })
+
                         })
+                            
+                            
                     }
 
                 });

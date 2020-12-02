@@ -17,10 +17,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
             len: [1]
-        },
-        share_status: {
-            type: DataTypes.BOOLEAN,
-            default: false
         }
     };
 
