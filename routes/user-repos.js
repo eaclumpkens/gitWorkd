@@ -45,7 +45,9 @@ module.exports = function(app) {
 
                         repoPull().then((repoData) => {
                             console.log(repoData.data);
-                        })     
+                        }).catch(err) {
+                            console.log(err);
+                        }
                             
                     }
 
