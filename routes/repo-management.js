@@ -32,9 +32,6 @@ module.exports = function(app) {
                     
                     if (repos.data.length > 0) {
 
-                        console.log(repos.data.length);
-                        console.log(repos.data[1]);
-
                         var handlebarsRepos = [];
                         for (var i = 0; i < repos.data.length; i ++) {
 
@@ -52,7 +49,9 @@ module.exports = function(app) {
                             handlebarsRepos.push(nRepo);
                         }
 
-                        res.json(handlebarsRepos);
+                        res.render("addRepo", {
+                            repos: handlebarsRepos
+                        })
 
                     } else {
                         console.log("Nothin");
