@@ -35,17 +35,7 @@ module.exports = function(app) {
                         var langLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
                         var repoLink = `${consts.GITHUB_REPO_URL}/${repo}`;
 
-                        async function repoPull() {
-                            return axios.get(repoLink).then(repoData => repoData.data);
-                        }
-
-                        async function langPull() {
-                            return axios.get(langLink).then(languages => languages.data);
-                        };
-
-                        repoPull().then((repoData) => {
-                            console.log(repoData.data);
-                        }).catch(err => console.log(err)) 
+                        console.log(langLink, repoLink);
                             
                     }
 
