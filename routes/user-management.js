@@ -34,6 +34,15 @@
                     }
                     langsDone++;
                     if (langsDone == langsTotal) {
+                        var numOfLangs = 0;
+                        var totalScore = 0;
+                        for (const k in uLangs) {
+                            numOfLangs++;
+                            totalScore += uLangs[k];
+                        }
+                        for (const k in uLangs) {
+                            uLangs[k] = totalScore / uLangs[k] * 100;
+                        }
                         console.log("finished getting repos");
                         console.log(uLangs);
                     }
