@@ -27,6 +27,9 @@
                 axios.get(repos[i].languages_url, header).then((repoLangs) => {
                     console.log(repoLangs.data);
                     for (const key in repoLangs.data) {
+                        if (!uLangs[key]) {
+                            uLangs[key] = 0;
+                        }
                         uLangs[key] += repoLangs.data[key];
                     }
                     langsDone++;
