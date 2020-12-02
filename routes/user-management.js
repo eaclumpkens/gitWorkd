@@ -9,6 +9,36 @@ const {
 
 const consts = require("../utils/consts");
 
+function populateUserScores(user) {
+    var header = {
+        headers: {
+            "Authorization": `token ${user.accessToken}`
+        }
+    }
+    var uLangs = [];
+    var langsDone = 0;
+    var langsTotal = 0;
+    axios.get(consts.GITHUB_REPO_URL, header).then((repoRes) => {
+        var repos = repoRes.data;
+        langsTotal = repos.length;
+        for (var i = 0; i < repos.length; i++) {
+            axios.get(repos[i].languages_url, header).then((repoLangs) => {
+                repoLangs.data.map((percent, val) => {
+                    if (uLangs[val]) {
+                        uLangs[val] += percent;
+                    } else {
+                        uLangs[val] = percent;
+                    }
+                });
+                langsDone++;
+                if (langsDone == langsTotal) {
+                    calculateTotal(uLangs);
+                }
+            });
+        }
+    });
+}
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -52,7 +82,7 @@ module.exports = function(app) {
                     if (dbReturn[1]) {
                         console.log("Created New User");
                         res.send("Welcome new User: " + gitUser.data.name);
-                        populateProfencies();
+                        populateUserScores(gitUser.data);
                     } else {
                         res.send("Welcome back " + gitUser.data.name);
                     }

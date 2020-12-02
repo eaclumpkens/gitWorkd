@@ -32,13 +32,13 @@ module.exports = function(sequelize, DataTypes) {
 
     for (var i = 0; i < langarray.length; i++) {
         var lang = langarray[i];
+        lang = lang.replace(/\./g, "_");
         if (lang == "") {
             continue;
         }
-        lang = lang.replace(/\s/g, "_");
         colData[lang] = {
             type: DataTypes.DECIMAL(3, 2),
-            allowNull: false,
+            allowNull: true,
             default: 0
         }
     }
