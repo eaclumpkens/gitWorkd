@@ -22,8 +22,13 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                var accessToken = loggedUser.accessToken;
-                axios.get(consts.GITHUB_REPO_URL + accessToken).then((repos) => {
+                var header = {
+                    headers: {
+                        "Authorization": `token ${loggedUser.accessToken}`
+                    }
+                }
+
+                axios.get(consts.GITHUB_REPO_URL, header).then((repos) => {
                     console.log(repos);
                 }).catch((err) => {
                     console.log(err);
