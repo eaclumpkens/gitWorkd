@@ -16,7 +16,7 @@ module.exports = function(app) {
     app.get("/addRepo", (req, res) => {
         
         if (req.cookies.uuid) {
-            db.User.fineOne({
+            db.User.findOne({
                 where: {
                     cookie: req.cookies.uuid
                 }
