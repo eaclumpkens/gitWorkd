@@ -29,7 +29,7 @@ module.exports = function(app) {
                 axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
                     username = gitUser.data.name;
                 });
-
+                console.log(gitUser);
                 console.log(username);
 
             })
