@@ -34,7 +34,9 @@ module.exports = function(app) {
                         var repo = myRepos[i];
                         var repoLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
 
-                        console.log(repoLink);
+                        axios.get(repoLink).then((languages) => {
+                            console.log(languages);
+                        })
                     }
 
                 });
