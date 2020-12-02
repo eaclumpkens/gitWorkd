@@ -23,18 +23,23 @@
             var repos = repoRes.data;
             langsTotal = repos.length;
             for (var i = 0; i < repos.length; i++) {
+                console.log("Getting langs for " + repos[i].languages_url);
                 axios.get(repos[i].languages_url, header).then((repoLangs) => {
-                    repoLangs.data.map((percent, val) => {
-                        if (uLangs[val]) {
-                            uLangs[val] += percent;
-                        } else {
-                            uLangs[val] = percent;
-                        }
-                    });
+
+                    // repoLangs.data.map((percent, val) => {
+                    //     if (uLangs[val]) {
+                    //         uLangs[val] += percent;
+                    //     } else {
+                    //         uLangs[val] = percent;
+                    //     }
+                    // });
                     langsDone++;
                     if (langsDone == langsTotal) {
-                        calculateTotal(uLangs);
+                        console.log("finished getting repos");
                     }
+                }).catch((err) => {
+                    console.log("error getting repo langs");
+                    console.log(err);
                 });
             }
         }).catch((err) => {
