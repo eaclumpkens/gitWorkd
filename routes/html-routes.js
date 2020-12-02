@@ -22,7 +22,6 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
-                console.log(loggedUser);
                 if (loggedUser) {
                     var header = {
                         headers: {
