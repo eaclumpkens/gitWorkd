@@ -24,7 +24,7 @@ module.exports = function(app) {
                     }
                 };
 
-                async function userPull() {
+                function userPull() {
                     return axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
                 }
 
