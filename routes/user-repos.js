@@ -1,4 +1,4 @@
-var myRepos = [];
+var myRepos = ['gitWorkd', 'eaclumpkens', 'restaurantApp'];
 
 var db = require("../models");
 var axios = require("axios");
@@ -30,11 +30,12 @@ module.exports = function(app) {
 
                 userPull().then(username => {
 
-                    var repo = 'gitWorkd'
-                    var repoLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
+                    for (var i = 0; i < myRepos.length; i ++) {
+                        var repo = myRepos[i];
+                        var repoLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
 
-                    console.log(repoLink);
-
+                        console.log(repoLink);
+                    }
 
                 });
 
