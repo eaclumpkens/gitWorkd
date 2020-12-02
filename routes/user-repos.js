@@ -11,8 +11,8 @@ const consts = require("../utils/consts");
 
 module.exports = function(app) {
 
-    app.get("/api/user-repos", (req, res) =>  {
-
+    app.get("/apu/user-repos", (req, res) => {
+        
         if (req.cookies.uuid) {
             db.User.findOne({
                 where: {
@@ -20,11 +20,12 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                axios.get(consts.GITHUB_USER_URL, {
+                var header = {
                     headers: {
                         "Authorization": `token ${loggedUser.accessToken}`
                     }
-                }).then((gitUser) => {
+                }
+                axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
                     var username = gitUser.data.login;
                     console.log(username)
                     for (var i = 0; i < myRepos.length; i++) {
