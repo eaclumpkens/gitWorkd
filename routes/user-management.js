@@ -25,7 +25,7 @@
             for (var i = 0; i < repos.length; i++) {
                 console.log("Getting langs for " + repos[i].languages_url);
                 axios.get(repos[i].languages_url, header).then((repoLangs) => {
-
+                    console.log(repoLangs.data);
                     // repoLangs.data.map((percent, val) => {
                     //     if (uLangs[val]) {
                     //         uLangs[val] += percent;
