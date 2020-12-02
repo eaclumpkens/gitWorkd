@@ -49,7 +49,7 @@ module.exports = function(app) {
                             handlebarsRepos.push(nRepo);
                         }
 
-                        res.render("addRepo", {layout: "add"}, {
+                        res.render("addRepo",{
                             repos: handlebarsRepos
                         });
 
