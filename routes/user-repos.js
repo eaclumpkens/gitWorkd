@@ -47,8 +47,8 @@ module.exports = function(app) {
 
                             console.log(response.data);
 
-                            langpull().then((res) => {
-                                console.log(res);
+                            langPull().then((res) => {
+                                console.log(res.data);
                             })
 
                         })
