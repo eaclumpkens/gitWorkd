@@ -41,7 +41,7 @@
                             totalScore += uLangs[k];
                         }
                         for (const k in uLangs) {
-                            uLangs[k] = (totalScore / uLangs[k]) * 100;
+                            uLangs[k] = (totalScore / uLangs[k]);
                         }
                         console.log("finished getting repos");
                         console.log(uLangs);
