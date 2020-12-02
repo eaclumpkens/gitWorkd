@@ -9,6 +9,9 @@
 
     const consts = require("../utils/consts");
     const repo = require("../models/repo");
+    const {
+        unlink
+    } = require("fs");
 
     function populateUserScores(user) {
         var header = {
@@ -43,8 +46,23 @@
                         for (const k in uLangs) {
                             uLangs[k] = (uLangs[k] / totalScore) * 100;
                         }
+                        var databaseULangs = {};
+                        for (const k in ULangs) {
+                            var newKey = k.replace(/\./g, "_");
+                            databaseULangs[newKey] = ULangs[k];
+                        }
                         console.log("finished getting repos");
                         console.log(uLangs);
+
+                        db.User.update(databaseULangs, {
+                            where: {
+                                id: user.id
+                            },
+                            returning: true,
+                            plain: true
+                        }).then((dbReturn) => {
+                            console.log(dbReturn);
+                        });
                     }
                 }).catch((err) => {
                     console.log("error getting repo langs");
