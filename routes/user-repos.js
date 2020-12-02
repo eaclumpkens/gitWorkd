@@ -1,5 +1,6 @@
 var myRepos = ['gitWorkd', 'eaclumpkens', 'restaurantApp'];
 
+var path = require("path");
 var db = require("../models");
 var axios = require("axios");
 const {
@@ -19,13 +20,11 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                var header = {
+                axios.get(consts.GITHUB_USER_URL, {
                     headers: {
                         "Authorization": `token ${loggedUser.accessToken}`
                     }
-                };
-
-                axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
+                }).then((gitUser) => {
                     var username = gitUser.data.login;
                     console.log(username)
                     for (var i = 0; i < myRepos.length; i++) {
