@@ -43,11 +43,9 @@ module.exports = function(app) {
                             return axios.get(langLink).then(languages => languages.data);
                         };
 
-                        repoPull().then(repository => res.json(repository.data));
-
-
-                        langPull().then(language => res.json(language.data))
-                            
+                        repoPull().then((repoData) => {
+                            console.log(repoData.data);
+                        })     
                             
                     }
 
