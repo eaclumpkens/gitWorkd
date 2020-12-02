@@ -18,7 +18,6 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                var username;
 
                 var header = {
                     headers: {
@@ -26,14 +25,16 @@ module.exports = function(app) {
                     }
                 };
 
-                axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
-                    username = gitUser.data.login;
-                    console.log(username);
+                async function userPull() {
+                    return axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
+                }
+
+                userPull().then(data => {
+                    console.log(data);
                 });
 
-                console.log(username);
 
-            })
+            });
         }
 
 
