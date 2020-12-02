@@ -60,6 +60,7 @@ module.exports = function(app) {
                     "Authorization": `token ${access_token}`
                 }
             }
+            console.log(header);
             axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
                 console.log(gitUser.data);
                 console.log(gitUser.headers);
