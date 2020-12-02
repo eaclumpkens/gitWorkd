@@ -11,7 +11,7 @@ const consts = require("../utils/consts");
 
 module.exports = function(app) {
 
-    app.get("/apu/user-repos", (req, res) => {
+    app.get("/api/user-repos", (req, res) => {
         
         if (req.cookies.uuid) {
             db.User.findOne({
