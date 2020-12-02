@@ -45,10 +45,10 @@ module.exports = function(app) {
 
                         repoPull().then((response) => {
 
-                            console.log(response.data);
+                            res.json(response.data);
 
                             langPull().then((res) => {
-                                console.log(res.data);
+                                res.json(res.data);
                             })
 
                         })
