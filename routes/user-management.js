@@ -51,6 +51,7 @@
                             var newKey = k.replace(/\./g, "_");
                             databaseULangs[newKey] = uLangs[k];
                         }
+
                         console.log("finished getting repos");
                         console.log(uLangs);
 

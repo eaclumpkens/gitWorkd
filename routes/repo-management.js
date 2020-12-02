@@ -30,7 +30,7 @@ module.exports = function(app) {
 
                 axios.get(consts.GITHUB_REPO_URL, header).then((repos) => {
                     
-                    if (repos.length > 0) {
+                    if (repos.data.length > 0) {
 
                         console.log(repos.length);
                         console.log(repos[1]);
