@@ -18,7 +18,6 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-
                 var header = {
                     headers: {
                         "Authorization": `token ${loggedUser.accessToken}`
@@ -29,10 +28,15 @@ module.exports = function(app) {
                     return axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
                 }
 
-                userPull().then(data => {
-                    console.log(data);
-                });
+                userPull().then(username => {
 
+                    var repo = 'gitWorkd'
+                    var repoLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
+
+                    console.log(repoLink);
+
+
+                });
 
             });
         }
