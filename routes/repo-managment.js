@@ -14,27 +14,19 @@ const consts = require("../utils/consts");
 module.exports = function(app) {
 
     app.get("/addRepo", (req, res) => {
+        
         if (req.cookies.uuid) {
-            db.User.findOne({
+            db.User.fineOne({
                 where: {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
 
-                console.log(loggedUser);
-                if (loggedUser) {
-                    
-                    axios.get(consts.GITHUB_REPO_URL, {
-                        params: {
+                var accessToken = loggedUser.accessToken;
+                console.log(accessToken);
 
-                        }
-                    })
-=
-                }
-
-            });
-        } else {
-            //TODO REDIRECT TO MAIN
+            })
         }
+
     });
 }

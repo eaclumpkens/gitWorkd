@@ -54,7 +54,7 @@ module.exports = function(app) {
                         res.send("Welcome new User: " + gitUser.data.name);
                         populateProfencies();
                     } else {
-                        res.send("Weclome back " + gitUser.data.name);
+                        res.send("Welcome back " + gitUser.data.name);
                     }
                 });
             });
