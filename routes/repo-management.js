@@ -40,9 +40,9 @@ module.exports = function(app) {
                             }
 
                             var nRepo = {
-                                id: repos.data[i].id,
                                 name: repos.data[i].name,
                                 description: repos.data[i].description,
+                                language: repos.data[i].language,
                                 url: repos.data[i].html_url
                             };
 
