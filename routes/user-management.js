@@ -15,6 +15,7 @@ function populateUserScores(user) {
             "Authorization": `token ${user.accessToken}`
         }
     }
+    console.log(header);
     var uLangs = [];
     var langsDone = 0;
     var langsTotal = 0;
