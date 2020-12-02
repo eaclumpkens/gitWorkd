@@ -24,22 +24,10 @@ module.exports = function(app) {
                     }
                 };
 
-                function userPull() {
-                    return axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
-                }
+                var username = axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
+                
 
-                userPull().then(username => {
-
-                    for (var i = 0; i < myRepos.length; i ++) {
-                        var repo = myRepos[i];
-                        var langLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}/languages`;
-                        var repoLink = `${consts.GITHUB_REPO_URL}/${repo}`;
-
-                        console.log(langLink, repoLink);
-                            
-                    }
-
-                });
+                console.log(username);
 
             });
         }
