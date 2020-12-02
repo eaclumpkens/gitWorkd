@@ -3,6 +3,7 @@ module.exports = {
     GITHUB_USER_URL: "https://api.github.com/user",
 
     GITHUB_REPO_URL: "https://api.github.com/user/repos",
+    GITHUB_LANG_URL: "https://api.github.com/repos",
 
     SIGN_UP_URL: "https://github.com/login/oauth/authorize?scope=user:email&client_id=",
 
