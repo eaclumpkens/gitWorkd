@@ -32,8 +32,8 @@ module.exports = function(app) {
                     
                     if (repos.data.length > 0) {
 
-                        console.log(repos.length);
-                        console.log(repos[1]);
+                        console.log(repos.data.length);
+                        console.log(repos.data[1]);
 
                     } else {
                         console.log("Nothin");
