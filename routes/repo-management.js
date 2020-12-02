@@ -51,7 +51,9 @@ module.exports = function(app) {
 
                         res.render("addRepo", {
                             repos: handlebarsRepos
-                        })
+                        });
+
+                        console.log(handlebarsRepos);
 
                     } else {
                         console.log("Nothin");
