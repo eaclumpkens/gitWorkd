@@ -24,10 +24,21 @@ module.exports = function(app) {
                     }
                 };
 
-                var username = axios.get(consts.GITHUB_USER_URL, header).then(gitUser => gitUser.data.login);
+                axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
+                    var username = gitUser.data.login;
+
+                    for (var i = 0; i < myRepos.length; i++) {
+                        var repo = myRepos[i];
+
+                        var repoLink = `${consts.GITHUB_REPO_URL}/${username}/${repo}`;
+                        var langLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}`;
+
+                        console.log(repoLink, langLink);
+                    }
+                });
                 
 
-                console.log(username);
+
 
             });
         }
