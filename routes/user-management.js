@@ -47,15 +47,9 @@
                             uLangs[k] = (uLangs[k] / totalScore) * 100;
                         }
                         var databaseULangs = {};
-<<<<<<< HEAD
-                        for (const k in ULangs) {
-                            var newKey = k.replace(/\./g, "_");
-                            databaseULangs[newKey] = ULangs[k];
-=======
                         for (const k in uLangs) {
                             var newKey = k.replace(/\./g, "_");
                             databaseULangs[newKey] = uLangs[k];
->>>>>>> 331ca794c76115482ab95ada0e64df393c0f8773
                         }
                         console.log("finished getting repos");
                         console.log(uLangs);
