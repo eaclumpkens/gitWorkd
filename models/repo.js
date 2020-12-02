@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
         }
         colData[lang] = {
             type: DataTypes.DECIMAL(3, 2),
-            allowNull: false,
+            allowNull: true,
             default: 0
         }
     }
