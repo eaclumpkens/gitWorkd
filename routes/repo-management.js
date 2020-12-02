@@ -33,7 +33,7 @@ module.exports = function(app) {
                     if (repos.length > 0) {
 
                         console.log(repos.length);
-                        console.log(repo[1]);
+                        console.log(repos[1]);
 
                     } else {
                         res.render("addRepo", {
