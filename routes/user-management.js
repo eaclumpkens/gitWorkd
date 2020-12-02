@@ -8,6 +8,7 @@
     } = require('uuid');
 
     const consts = require("../utils/consts");
+    const repo = require("../models/repo");
 
     function populateUserScores(user) {
         var header = {
@@ -23,19 +24,15 @@
             var repos = repoRes.data;
             langsTotal = repos.length;
             for (var i = 0; i < repos.length; i++) {
-                console.log("Getting langs for " + repos[i].languages_url);
                 axios.get(repos[i].languages_url, header).then((repoLangs) => {
                     console.log(repoLangs.data);
-                    // repoLangs.data.map((percent, val) => {
-                    //     if (uLangs[val]) {
-                    //         uLangs[val] += percent;
-                    //     } else {
-                    //         uLangs[val] = percent;
-                    //     }
-                    // });
+                    for (const key in repoLangs.data) {
+                        uLangs[key] += repoLangs.data[key];
+                    }
                     langsDone++;
                     if (langsDone == langsTotal) {
                         console.log("finished getting repos");
+                        console.log(uLangs);
                     }
                 }).catch((err) => {
                     console.log("error getting repo langs");
