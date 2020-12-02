@@ -12,7 +12,7 @@ const consts = require("../utils/consts");
 module.exports = function(app) {
 
     app.get("/api/user-repos", (req, res) => {
-        
+
         if (req.cookies.uuid) {
             db.User.findOne({
                 where: {
@@ -31,13 +31,13 @@ module.exports = function(app) {
                     for (var i = 0; i < myRepos.length; i++) {
                         var repo = myRepos[i];
 
-                        var repoLink = `${consts.GITHUB_REPO_URL}/${username}/${repo}`;
-                        var langLink = `${consts.GITHUB_LANG_URL}/${username}/${repo}`;
+                        var repoLink = `${consts.GITHUB_BASE_URL}/${username}/${repo}`;
+                        var langLink = `${consts.GITHUB_BASE_URL}/${username}/${repo}`;
 
                         console.log(repoLink, langLink);
                     }
                 }).catch(err => console.log(err.response));
-                
+
 
 
 
