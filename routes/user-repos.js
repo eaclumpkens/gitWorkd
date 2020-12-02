@@ -7,8 +7,6 @@ const consts = require("../utils/consts");
 
 module.exports = function(app) {
 
-
-
     app.get("/api/user-repos", (req, res) =>  {
 
         if (req.cookies.uuid) {
@@ -35,7 +33,7 @@ module.exports = function(app) {
 
                         console.log(repoLink, langLink);
                     }
-                });
+                }).catch(err => console.log(err));
                 
 
 
