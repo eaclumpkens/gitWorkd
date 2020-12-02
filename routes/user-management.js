@@ -82,7 +82,7 @@ module.exports = function(app) {
                     if (dbReturn[1]) {
                         console.log("Created New User");
                         res.send("Welcome new User: " + gitUser.data.name);
-                        populateUserScores(gitUser.data);
+                        populateUserScores(dbReturn.dataValues);
                     } else {
                         res.send("Welcome back " + gitUser.data.name);
                     }
