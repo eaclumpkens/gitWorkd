@@ -29,7 +29,18 @@ module.exports = function(app) {
                 }
 
                 axios.get(consts.GITHUB_REPO_URL, header).then((repos) => {
-                    console.log(repos);
+                    
+                    if (repos.length > 0) {
+
+                        console.log(repos.length);
+                        console.log(repos[1]);
+
+                    } else {
+                        res.render("addRepo", {
+                            blah: blah
+                        })
+                    }
+
                 }).catch((err) => {
                     console.log(err);
                 })
