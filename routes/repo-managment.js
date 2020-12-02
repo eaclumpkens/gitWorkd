@@ -23,7 +23,7 @@ module.exports = function(app) {
             }).then((loggedUser) => {
 
                 var accessToken = loggedUser.accessToken;
-                console.log(accessToken);
+                console.log(loggedUser);
 
             })
         }
