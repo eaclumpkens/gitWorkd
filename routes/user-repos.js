@@ -36,22 +36,17 @@ module.exports = function(app) {
                         var repoLink = `${consts.GITHUB_REPO_URL}/${repo}`;
 
                         async function repoPull() {
-                            return axios.get(repoLink).then((repoData) => repoData.data);
+                            return axios.get(repoLink).then(repoData => repoData.data);
                         }
 
                         async function langPull() {
-                            return axios.get(langLink).then((languages) => languages.data);
+                            return axios.get(langLink).then(languages => languages.data);
                         };
 
-                        repoPull().then((response) => {
+                        repoPull().then(repository => res.json(repository.data));
 
-                            res.json(response.data);
 
-                            langPull().then((res) => {
-                                res.json(res.data);
-                            })
-
-                        })
+                        langPull().then(language => res.json(language.data))
                             
                             
                     }
