@@ -36,9 +36,7 @@ module.exports = function(app) {
                         console.log(repos[1]);
 
                     } else {
-                        res.render("addRepo", {
-                            blah: blah
-                        })
+                        console.log("Nothin");
                     }
 
                 }).catch((err) => {
