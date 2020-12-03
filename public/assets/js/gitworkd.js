@@ -15,7 +15,7 @@ $(".select").on("click", function() {
 
 $(".deselect").on("click", function() {
 
-    $(this).parent().parent().parent().css("background-color", "black");
+    $(this).closest(".repo-card").css("background-color", "black");
     var spliced = $(this).closest(".repoDiv").attr("data-id");
     var index = reposToAdd.indexOf(spliced);
     if (index < 0) {
