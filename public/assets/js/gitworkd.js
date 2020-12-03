@@ -18,6 +18,10 @@ $(".deselect").on("click", function() {
     $(this).parent().parent().parent().css("background-color", "black");
     var spliced = $(this).closest(".repoDiv").attr("data-id");
     var index = repos.indexOf(spliced);
+    if (index < 0) {
+        console.log("Index not found");
+        return;
+    }
     repos.splice(index, 1);
 
     console.log(repos);
