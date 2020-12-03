@@ -96,7 +96,20 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
-                console.log(repos[i]);
+                db.repos.findOne({
+                    where: {
+                        repoId: repos[i]
+                    }
+                }).then((dbRepo) => {
+                    if (dbRepo) {
+                        console.log("Cannot add " + dbRepo.repoId + " already exists");
+                        return;
+                    }
+                    axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
+                        console.log(repoInfo.data);
+                    });
+
+                });
             }
 
         }).catch((err) => {
