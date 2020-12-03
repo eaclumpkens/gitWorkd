@@ -96,7 +96,7 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
-                db.Repo.findAll({
+                db.Repo.findOne({
                     where: {
                         githubId: repos[i]
                     }
