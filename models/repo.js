@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
-        repoId: DataTypes.BIGINT,
+        githubId: DataTypes.BIGINT,
     };
 
     var langs = fs.readFileSync("./languages.txt", {

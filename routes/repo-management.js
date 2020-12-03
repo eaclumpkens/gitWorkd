@@ -98,11 +98,11 @@ module.exports = function(app) {
             for (var i = 0; i < repos.length; i++) {
                 db.Repo.findAll({
                     where: {
-                        repoId: repos[i]
+                        githubId: repos[i]
                     }
                 }).then((dbRepo) => {
                     if (dbRepo) {
-                        console.log("Cannot add " + dbRepo.repoId + " already exists");
+                        console.log("Cannot add " + dbRepo.githubId + " already exists");
                         return;
                     } else {
                         console.log("adding repo" + repos[i]);
