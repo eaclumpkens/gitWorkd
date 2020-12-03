@@ -76,7 +76,6 @@ module.exports = function(app) {
 
     app.post("/api/postRepo", (req, res) => {
         var repos = req.body.Repos;
-        console.log(repos);
 
         if (!req.cookies.uuid) {
             res.status(500);
@@ -96,6 +95,7 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
+                console.log(repos[i]);
                 db.Repo.findOne({
                     where: {
                         githubId: repos[i]
