@@ -74,7 +74,7 @@ module.exports = function(app) {
 
     });
 
-    app.post("/api/postRepo", async (req, res) => {
+    app.post("/api/postRepo", (req, res) => {
         var repos = req.body.Repos;
 
         if (!req.cookies.uuid) {
@@ -96,27 +96,26 @@ module.exports = function(app) {
             }
             for (var i = 0; i < repos.length; i++) {
                 console.log(repos[i]);
-                var dbRepo = await db.Repo.findOne({
-                    where: {
-                        githubId: repos[i]
-                    }
-                });
-                console.log(dbRepo);
-                if (dbRepo) {
-                    console.log("Cannot add " + dbRepo.githubId + " already exists");
-                    return;
-                } else {
-                    console.log("adding repo" + repos[i]);
-                }
-                axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
-                    console.log(repoInfo.data);
-                });
+                var addRepo = (repoId) => {
+                    db.Repo.findOne({
+                        where: {
+                            githubId: repoId
+                        }
+                    }).then((dbRepo) => {
+                        console.log(dbRepo);
+                        if (dbRepo) {
+                            console.log("Cannot add " + dbRepo.githubId + " already exists");
+                            return;
+                        } else {
+                            console.log("adding repo" + repoId);
+                        }
+                        axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
+                            console.log(repoInfo.data);
+                        });
+                    });
+                };
+                addRepo(repos[i]);
             }
-
-        }).catch((err) => {
-            console.log(err);
         });
-        res.status(200);
-        res.send("okay");
     });
 }
