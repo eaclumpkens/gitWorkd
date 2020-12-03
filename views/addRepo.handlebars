@@ -24,7 +24,7 @@
               </div>
             </div>
           </div>
-        </div>
+    </div>
     
     {{#each repos}}
     <div class="row repoDiv" data-id={{id}}>
@@ -34,46 +34,41 @@
                     <div class="col-sm-12">
                         <h2 class="card-title">{{name}}</h4>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h5><i class="fab fa-github"></i> Description</h5>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h6>{{description}}</h6>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5><i class="fab fa-github"></i> Description</h5>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {{#if description}}
+                                    <h6>{{description}}</h6>
+                                    {{else}}
+                                    <h6>No Description Available</h6>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5><i class="fas fa-layer-group"></i> Technologies</h5>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>{{language}}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <h5><i class="fas fa-layer-group"></i> Technologies</h5>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h6>{{language}}</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <h5><i class="fas fa-people-arrows"></i> URL</h5>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h6 class="compat">{{url}}</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-12 mt-3">
-                        <button class="btn btn-outline-light btn-sm mr-3 select">Select
-                            Repo</button>
-                            <button class="btn btn-outline-light btn-sm mr-3 deselect">Deselect
-                            Repo</button>
-                        <a href="{{url}}" class="btn btn-outline-light btn-sm">View Repo</a>
-                        {{!-- {{Change button to a tag that links to github repo?}} --}}
+                    <div class="row">
+                        <div class="col-sm-12 mt-3">
+                            <button class="btn btn-outline-light btn-sm mr-3 select">Select
+                                Repo</button>
+                                <button class="btn btn-outline-light btn-sm mr-3 deselect">Deselect
+                                Repo</button>
+                            <a href="{{url}}" class="btn btn-outline-light btn-sm">View Repo</a>
+                            {{!-- {{Change button to a tag that links to github repo?}} --}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     {{/each}}
 </div>
