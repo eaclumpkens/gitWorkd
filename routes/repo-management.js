@@ -96,23 +96,22 @@ module.exports = function(app) {
             }
             for (var i = 0; i < repos.length; i++) {
                 console.log(repos[i]);
-                db.Repo.findOne({
+                dbRepo = await db.Repo.findOne({
                     where: {
                         githubId: repos[i]
                     }
-                }).then((dbRepo) => {
-                    console.log(dbRepo);
-                    if (dbRepo) {
-                        console.log("Cannot add " + dbRepo.githubId + " already exists");
-                        return;
-                    } else {
-                        console.log("adding repo" + repos[i]);
-                    }
-                    axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
-                        console.log(repoInfo.data);
-                    });
-
                 });
+                console.log(dbRepo);
+                if (dbRepo) {
+                    console.log("Cannot add " + dbRepo.githubId + " already exists");
+                    return;
+                } else {
+                    console.log("adding repo" + repos[i]);
+                }
+                axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
+                    console.log(repoInfo.data);
+                });
+
             }
 
         }).catch((err) => {
