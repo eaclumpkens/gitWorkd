@@ -21,6 +21,7 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
+                console.log(loggedUser);
 
                 var header = {
                     headers: {
@@ -71,10 +72,28 @@ module.exports = function(app) {
 
     app.post("/api/postRepo", (req, res) => {
         var repos = req.body;
-        console.log("postRepo: " + repos);
-        for (var i = 0; i < repos.length; i++) {
-            console.log(repos[i]);
-        }
+        console.log(repos);
+        console.log(req);
+
+        db.User.findOne({
+            where: {
+                cookie: req.cookies.uuid
+            }
+        }).then((loggedUser) => {
+
+            var header = {
+                headers: {
+                    "Authorization": `token ${loggedUser.accessToken}`
+                }
+            }
+            for (var i = 0; i < repos.length; i++) {
+                console.log(repos[i]);
+                axios.get(consts.GITHUB_REPO_BY_ID + repos[i], )
+            }
+
+        }).catch((err) => {
+            console.log(err);
+        });
         res.status(200);
         res.send("okay");
     });
