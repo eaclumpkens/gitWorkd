@@ -110,7 +110,25 @@ module.exports = function(app) {
                             console.log("adding repo" + repoId);
                         }
                         axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
-                            console.log(repoInfo.data);
+                            axios.get(repoInfo.language, header).then((langs) => {
+                                var numOfLangs = 0;
+                                var totalScore = 0;
+                                for (const k in langs) {
+                                    numOfLangs++;
+                                    totalScore += langs[k];
+                                }
+                                for (const k in langs) {
+                                    langs[k] = (langs[k] / totalScore) * 100;
+                                }
+                                var databaseULangs = {};
+                                for (const k in langs) {
+                                    var newKey = k.replace(/\./g, "_");
+                                    databaseULangs[newKey] = langs[k];
+                                }
+
+                                console.log("finished getting repos");
+                                console.log(uLangs);
+                            });
                         });
                     });
                 };
