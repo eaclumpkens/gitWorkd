@@ -127,7 +127,7 @@ module.exports = function(app) {
                                 }
 
                                 console.log("finished getting repos");
-                                console.log(uLangs);
+                                console.log(databaseULangs);
                             });
                         });
                     });
