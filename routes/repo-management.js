@@ -96,7 +96,7 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
-                db.Repo.findOne({
+                db.Repo.findAll({
                     where: {
                         repoId: repos[i]
                     }
@@ -104,6 +104,8 @@ module.exports = function(app) {
                     if (dbRepo) {
                         console.log("Cannot add " + dbRepo.repoId + " already exists");
                         return;
+                    } else {
+                        console.log("adding repo" + repos[i]);
                     }
                     axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
                         console.log(repoInfo.data);
