@@ -110,7 +110,7 @@ module.exports = function(app) {
                             console.log("adding repo" + repoId);
                         }
                         axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
-                            axios.get(repoInfo.language, header).then((langs) => {
+                            axios.get(repoInfo.languages_url, header).then((langs) => {
                                 var numOfLangs = 0;
                                 var totalScore = 0;
                                 for (const k in langs) {
