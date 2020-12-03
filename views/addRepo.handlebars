@@ -13,6 +13,18 @@
     </nav>
 
 <div class="container">
+
+    <div class="row">
+          <div class="col-sm-5 mx-auto text-center">
+            <div class="jumbotron jumbotron-fluid add-jumbo">
+              <div class="container">
+                <h3>Add Your Repos</h3>
+                <p class="instr">To add your repos to the main feed, simply select the repos you want and then press submit.</p>
+                <button class="btn btn-outline-light btn-lg btn-block">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
     
     {{#each repos}}
     <div class="row">
@@ -52,7 +64,9 @@
 
                 <div class="row">
                     <div class="col-sm-12 mt-3">
-                        <button class="btn btn-outline-light btn-sm mr-3 save-repo">Add
+                        <button class="btn btn-outline-light btn-sm mr-3 select">Select
+                            Repo</button>
+                            <button class="btn btn-outline-light btn-sm mr-3 deselect">Deselect
                             Repo</button>
                         <a href="{{url}}" class="btn btn-outline-light btn-sm">View Repo</a>
                         {{!-- {{Change button to a tag that links to github repo?}} --}}

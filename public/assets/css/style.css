@@ -4,6 +4,15 @@
     border-radius: 1rem;
 }
 
+.add-jumbo{
+    background-color: black;
+    color: white;
+    margin-top: 2rem;
+    padding: 20px;
+    border: 1px solid white;
+    
+}
+
 .logo{
     font-family: 'Permanent Marker', cursive;
     color: black;
@@ -22,6 +31,10 @@ body{
 .github{
     font-size: 25px;
     margin-left: 5px;
+}
+
+.instr{
+    color:grey;
 }
 
 
