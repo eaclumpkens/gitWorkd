@@ -20,14 +20,14 @@
               <div class="container">
                 <h3>Add Your Repos</h3>
                 <p class="instr">To add your repos to the main feed, simply select the repos you want and then press submit.</p>
-                <button class="btn btn-outline-light btn-lg btn-block">Submit</button>
+                <button id="submitRepos" class="btn btn-outline-light btn-lg btn-block">Submit</button>
               </div>
             </div>
           </div>
         </div>
     
     {{#each repos}}
-    <div class="row">
+    <div class="row repoDiv" data-id={{id}}>
         <div class="col-sm-10 mx-auto repo-card card text-center ">
             <div class="card-body">
                 <div class="row">

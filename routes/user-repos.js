@@ -19,7 +19,9 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
+                loggedUser.getRepos().then((repos) => {
 
+                });
                 var header = {
                     headers: {
                         "Authorization": `token ${loggedUser.accessToken}`
