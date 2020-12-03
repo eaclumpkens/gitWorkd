@@ -28,7 +28,10 @@ $(".deselect").on("click", function() {
 });
 
 $("#submitRepos").on("click", function() {
-    var datastr = JSON.stringify(repos);
+    var reposToSend = {
+        Repos: repos
+    }
+    var datastr = JSON.stringify(reposToSend);
     $.ajax("/api/postRepo", {
         data: datastr,
         method: "POST"

@@ -21,7 +21,10 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
-                console.log(loggedUser);
+                if (!loggedUser) {
+                    res.redirect("/");
+                    return;
+                }
 
                 var header = {
                     headers: {
@@ -66,6 +69,9 @@ module.exports = function(app) {
                 })
 
             })
+        } else {
+            console.log("No Cookie, Redirecting");
+            res.redirect("/");
         }
 
     });
