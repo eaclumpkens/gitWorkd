@@ -14,7 +14,7 @@
 
 <div class="container">
 
-    <div class="row">
+        <div class="row">
           <div class="col-sm-5 mx-auto text-center">
             <div class="jumbotron jumbotron-fluid add-jumbo">
               <div class="container">
@@ -24,15 +24,16 @@
               </div>
             </div>
           </div>
-    </div>
+        </div>
     
-    {{#each repos}}
-    <div class="row repoDiv" data-id={{id}}>
-        <div class="col-sm-10 mx-auto repo-card card text-center ">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="card-title">{{name}}</h4>
+        {{#each repos}}
+        <div class="row">
+            <div class="col-sm-10 mx-auto repo-card card text-center ">
+                <div class="card-body">
+                    <div class="row sibling">
+                        <div class="col-sm-12">
+                            <h2 class="card-title">{{name}}</h4>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
@@ -60,21 +61,19 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="row">
-                        <div class="col-sm-12 mt-3 text-center">
+                        <div class="col-sm-12 mt-3">
                             <button class="btn btn-outline-light btn-sm mr-3 select">Select
                                 Repo</button>
                                 <button class="btn btn-outline-light btn-sm mr-3 deselect">Deselect
                                 Repo</button>
                             <a href="{{url}}" class="btn btn-outline-light btn-sm">View Repo</a>
-                            {{!-- {{Change button to a tag that links to github repo?}} --}}
-                        </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-        
         </div>
-    {{/each}}
-</div>
+        {{/each}}
+    </div>
