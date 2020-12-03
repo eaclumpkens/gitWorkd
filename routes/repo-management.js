@@ -129,6 +129,10 @@ module.exports = function(app) {
                                 }
 
                                 console.log("finished getting repos");
+                                if (!repoInfo.data.description) {
+                                    console.log("Repo has no description adding none");
+                                    repoInfo.data.description = "None!";
+                                }
                                 var repoEntry = {
                                     githubId: repoId,
                                     title: repoInfo.data.name,
