@@ -8,6 +8,7 @@ const {
 } = require('uuid');
 
 const consts = require("../utils/consts");
+const repo = require("../models/repo");
 
 // Routes
 // =============================================================
@@ -110,9 +111,11 @@ module.exports = function(app) {
                             console.log("adding repo" + repoId);
                         }
                         axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
-                            axios.get(repoInfo.languages_url, header).then((langs) => {
+                            console.log(repoInfo.data)
+                            axios.get(repoInfo.data.languages_url, header).then((gitlangs) => {
                                 var numOfLangs = 0;
                                 var totalScore = 0;
+                                var langs = gitlangs.data;
                                 for (const k in langs) {
                                     numOfLangs++;
                                     totalScore += langs[k];
