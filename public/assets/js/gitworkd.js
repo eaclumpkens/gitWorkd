@@ -28,5 +28,13 @@ $(".deselect").on("click", function() {
 });
 
 $("#submitRepos").on("click", function() {
-    $.ajax("/api/postRepo");
+    var datastr = JSON.stringify(repos);
+    $.ajax("/api/postRepo", {
+        data: datastr,
+        method: "POST"
+    }).then((res) => {
+        console.log("Successfully added to DB");
+    }).catch((err) => {
+        console.log("Failed to add to DB");
+    });
 });
