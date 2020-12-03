@@ -16,8 +16,9 @@ $(".select").on("click", function() {
 $(".deselect").on("click", function() {
 
     $(this).parent().parent().parent().css("background-color", "black");
-    var spliced = $(this).closest(".repoDiv").attr("data-id")
-    repos.splice(spliced, 1);
+    var spliced = $(this).closest(".repoDiv").attr("data-id");
+    var index = repos.indexOf(spliced);
+    repos.splice(index, 1);
 
     console.log(repos);
 });
