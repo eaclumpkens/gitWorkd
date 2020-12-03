@@ -31,9 +31,8 @@ $("#submitRepos").on("click", function() {
     var reposToSend = {
         Repos: reposToAdd
     }
-    var datastr = JSON.stringify(reposToSend);
     $.ajax("/api/postRepo", {
-        data: datastr,
+        data: reposToSend,
         method: "POST"
     }).done((res) => {
         console.log("Successfully added to DB");
