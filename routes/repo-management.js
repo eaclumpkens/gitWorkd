@@ -74,7 +74,7 @@ module.exports = function(app) {
 
     });
 
-    app.post("/api/postRepo", (req, res) => {
+    app.post("/api/postRepo", async (req, res) => {
         var repos = req.body.Repos;
 
         if (!req.cookies.uuid) {
@@ -96,7 +96,7 @@ module.exports = function(app) {
             }
             for (var i = 0; i < repos.length; i++) {
                 console.log(repos[i]);
-                dbRepo = await db.Repo.findOne({
+                var dbRepo = await db.Repo.findOne({
                     where: {
                         githubId: repos[i]
                     }
@@ -111,7 +111,6 @@ module.exports = function(app) {
                 axios.get(consts.GITHUB_REPO_BY_ID + repos[i], header).then((repoInfo) => {
                     console.log(repoInfo.data);
                 });
-
             }
 
         }).catch((err) => {
