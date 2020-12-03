@@ -79,7 +79,12 @@ module.exports = function(app) {
     app.post("/api/postRepo", (req, res) => {
         var repos = req.body;
         console.log(repos);
-        console.log(req);
+
+        if (!req.cookies.uuid) {
+            res.status(500);
+            res.send("Not logged in");
+            return;
+        }
 
         db.User.findOne({
             where: {
