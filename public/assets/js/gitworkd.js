@@ -32,9 +32,9 @@ $("#submitRepos").on("click", function() {
     $.ajax("/api/postRepo", {
         data: datastr,
         method: "POST"
-    }).then((res) => {
+    }).done((res) => {
         console.log("Successfully added to DB");
-    }).catch((err) => {
+    }).fail((err) => {
         console.log("Failed to add to DB");
     });
 });
