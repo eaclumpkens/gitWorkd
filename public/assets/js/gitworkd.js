@@ -1,4 +1,4 @@
-var repos = [];
+var reposToAdd = [];
 
 $(".select").on("click", function() {
 
@@ -6,30 +6,30 @@ $(".select").on("click", function() {
 
     var repoTitle = $(this).closest(".repoDiv").attr("data-id");
     console.log(repoTitle);
-    if (repos.indexOf(repoTitle) < 0) {
-        repos.push(repoTitle);
+    if (reposToAdd.indexOf(repoTitle) < 0) {
+        reposToAdd.push(repoTitle);
     }
 
-    console.log(repos);
+    console.log(reposToAdd);
 });
 
 $(".deselect").on("click", function() {
 
     $(this).parent().parent().parent().css("background-color", "black");
     var spliced = $(this).closest(".repoDiv").attr("data-id");
-    var index = repos.indexOf(spliced);
+    var index = reposToAdd.indexOf(spliced);
     if (index < 0) {
         console.log("Index not found");
         return;
     }
-    repos.splice(index, 1);
+    reposToAdd.splice(index, 1);
 
-    console.log(repos);
+    console.log(reposToAdd);
 });
 
 $("#submitRepos").on("click", function() {
     var reposToSend = {
-        Repos: repos
+        Repos: reposToAdd
     }
     var datastr = JSON.stringify(reposToSend);
     $.ajax("/api/postRepo", {
