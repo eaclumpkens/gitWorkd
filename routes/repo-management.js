@@ -58,8 +58,6 @@ module.exports = function(app) {
                             repos: handlebarsRepos
                         });
 
-                        console.log(handlebarsRepos);
-
                     } else {
                         console.log("Nothin");
                     }
@@ -77,7 +75,7 @@ module.exports = function(app) {
     });
 
     app.post("/api/postRepo", (req, res) => {
-        var repos = req.body;
+        var repos = req.body.Repos;
         console.log(repos);
 
         if (!req.cookies.uuid) {
@@ -99,7 +97,6 @@ module.exports = function(app) {
             }
             for (var i = 0; i < repos.length; i++) {
                 console.log(repos[i]);
-                axios.get(consts.GITHUB_REPO_BY_ID + repos[i], )
             }
 
         }).catch((err) => {
