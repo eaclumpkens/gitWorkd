@@ -14,7 +14,7 @@ const consts = require("../utils/consts");
 module.exports = function(app) {
 
     app.get("/addRepo", (req, res) => {
-        
+
         if (req.cookies.uuid) {
             db.User.findOne({
                 where: {
@@ -29,11 +29,11 @@ module.exports = function(app) {
                 }
 
                 axios.get(consts.GITHUB_REPO_URL, header).then((repos) => {
-                    
+
                     if (repos.data.length > 0) {
 
                         var handlebarsRepos = [];
-                        for (var i = 0; i < repos.data.length; i ++) {
+                        for (var i = 0; i < repos.data.length; i++) {
 
                             if (repos.data[i].private) {
                                 continue;
@@ -43,13 +43,14 @@ module.exports = function(app) {
                                 name: repos.data[i].name,
                                 description: repos.data[i].description,
                                 language: repos.data[i].language,
-                                url: repos.data[i].html_url
+                                url: repos.data[i].html_url,
+                                id: repos.data[i].id
                             };
 
                             handlebarsRepos.push(nRepo);
                         }
 
-                        res.render("addRepo",{
+                        res.render("addRepo", {
                             repos: handlebarsRepos
                         });
 

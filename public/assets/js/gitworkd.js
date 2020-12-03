@@ -1,23 +1,27 @@
 var repos = [];
 
-$(".select").on("click", function(){
-    
+$(".select").on("click", function() {
+
     $(this).parent().parent().parent().css("background-color", "rgba(0, 128, 0, 0.7)");
 
-    var repoTitle = $(this).parent().parent().siblings().siblings().children().children("h2").text();
+    var repoTitle = $(this).closest(".repoDiv").attr("data-id");
     console.log(repoTitle);
-    if(repos.indexOf(repoTitle) < 0){
+    if (repos.indexOf(repoTitle) < 0) {
         repos.push(repoTitle);
     }
-    
+
     console.log(repos);
 });
 
-$(".deselect").on("click", function(){
-    
+$(".deselect").on("click", function() {
+
     $(this).parent().parent().parent().css("background-color", "black");
-    var spliced = $(this).parent().parent().siblings().siblings().children().children("h2").text();
+    var spliced = $(this).closest(".repoDiv").attr("data-id")
     repos.splice(spliced, 1);
 
     console.log(repos);
+});
+
+$("#submitRepos").on("click", function() {
+    $.ajax("/api/postRepo");
 });
