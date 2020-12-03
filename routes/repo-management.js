@@ -96,7 +96,7 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
-                db.repo.findOne({
+                db.Repo.findOne({
                     where: {
                         repoId: repos[i]
                     }
