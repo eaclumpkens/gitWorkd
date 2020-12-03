@@ -96,11 +96,12 @@ module.exports = function(app) {
                 }
             }
             for (var i = 0; i < repos.length; i++) {
-                db.Repo.findAll({
+                db.Repo.findOne({
                     where: {
                         githubId: repos[i]
                     }
                 }).then((dbRepo) => {
+                    console.log(dbRepo);
                     if (dbRepo) {
                         console.log("Cannot add " + dbRepo.githubId + " already exists");
                         return;
