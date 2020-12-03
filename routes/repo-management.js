@@ -101,6 +101,7 @@ module.exports = function(app) {
                         githubId: repos[i]
                     }
                 }).then((dbRepo) => {
+                    console.log(dbRepo);
                     if (dbRepo) {
                         console.log("Cannot add " + dbRepo.githubId + " already exists");
                         return;
