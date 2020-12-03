@@ -132,7 +132,8 @@ module.exports = function(app) {
                                 var repoEntry = {
                                     githubId: repoId,
                                     title: repoInfo.data.name,
-                                    description: repoInfo.description,
+                                    description: repoInfo.data.description,
+                                    UserId: loggedUser.id
                                 };
                                 for (const k in databaseULangs) {
                                     repoEntry[k] = databaseULangs[k];
