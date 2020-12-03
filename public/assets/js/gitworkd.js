@@ -2,7 +2,7 @@ var reposToAdd = [];
 
 $(".select").on("click", function() {
 
-    $(this).parent().parent().parent().css("background-color", "rgba(0, 128, 0, 0.7)");
+    $(this).closest("repo-card").css("background-color", "rgba(0, 128, 0, 0.5)");
 
     var repoTitle = $(this).closest(".repoDiv").attr("data-id");
     console.log(repoTitle);
