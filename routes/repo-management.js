@@ -71,9 +71,11 @@ module.exports = function(app) {
 
     app.post("/api/postRepo", (req, res) => {
         var repos = req.body;
+        console.log("postRepo: " + repos);
         for (var i = 0; i < repos.length; i++) {
             console.log(repos[i]);
         }
-        res.status(204);
+        res.status(200);
+        res.send("okay");
     });
 }
