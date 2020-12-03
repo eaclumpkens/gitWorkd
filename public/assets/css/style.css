@@ -7,11 +7,12 @@
 .add-jumbo{
     background-color: black;
     color: white;
-    margin-top: 2rem;
+    margin-top: 4rem;
     padding: 20px;
     border: 1px solid white;
-    
 }
+
+
 
 .logo{
     font-family: 'Permanent Marker', cursive;
@@ -104,7 +105,7 @@ a:hover{
 }
 
 .repo-card{
-    margin-bottom: 1rem;
+    margin-top: 12rem;
     background-color: rgba(0, 0, 0, 0.959);
     color: grey;
     border: 1px solid white;
