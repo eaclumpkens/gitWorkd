@@ -52,7 +52,7 @@ module.exports = function(app) {
                             // iterate through repo lang bytes
                             Object.entries(otherRepos[a]).forEach(([key, value]) => {
                                 if (key === languages[b]) {
-                                    if (value) {
+                                    if (value !== null) {
                                         repoScore = value;
                                     };
                                 };
