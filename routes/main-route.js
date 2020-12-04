@@ -7,9 +7,36 @@ const {
 
 var otherRepos = [];
 
+var mockRepos = [
+    {
+        title: "Eat-Da-Burger",
+        username: "nickelme",
+        tech: "JavaScript, Handlebars, MySQL",
+        compat: "100%",
+        link: "https://www.google.com"
+    },
+    {
+        title: "Note Taker",
+        username: "eaclumpkens",
+        tech: "JavaScript, Handlebars, MySQL",
+        compat: "90%",
+        link: "https://www.google.com"
+    },
+    {
+        title: "Random Repo",
+        username: "twkirkpatrick",
+        tech: "JavaScript, Handlebars, MySQL",
+        compat: "80%",
+        link: "https://www.google.com"
+    },
+    
+]
+
 module.exports = function(app) {
 
     app.get("/main", (req, res) => {
+
+        res.render("main-feed", {repos: mockRepos});
         // get current user
         if (req.cookies.uuid) {
             db.User.findOne({
