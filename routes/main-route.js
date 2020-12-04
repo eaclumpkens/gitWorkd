@@ -46,9 +46,15 @@ module.exports = function(app) {
 
                         // iterate through language keys
                         for (var b = 0; b < languages.length; b++) {
-                            var language  = languages[b];
+                            
 
-                            console.log(language);
+                            for (const [key, value] of Object.entries(loggedUser.dataValues)) {
+
+                                if (key === languages[b]) {
+                                    console.table(key, value)
+                                }
+
+                            }
                             
 
 
