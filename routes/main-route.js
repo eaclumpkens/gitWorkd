@@ -48,7 +48,8 @@ module.exports = function(app) {
                         for (var b = 0; b < languages.length; b++) {
                             var language  = languages[b];
 
-                            // console.log(language);
+                            console.log(language);
+                            console.log(loggedUser.dataValues.language);
 
 
                         }
