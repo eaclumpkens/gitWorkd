@@ -46,15 +46,15 @@ module.exports = function(app) {
                         // iterate through language keys
                         for (var b = 0; b < languages.length; b++) {
                             
-
+                            // iterate through repo language values
                             Object.entries(otherRepos[a]).forEach(([key, value]) => {
                                 if (key === languages[b]) {
-                                    console.log(`${key}: ${value}`);
+                                    if (value !== null) {
+                                        console.log(`${key}: ${value}`);
+                                    }
                                 };
                             });
                             
-
-
                         }
     
     
