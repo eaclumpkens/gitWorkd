@@ -60,7 +60,7 @@ module.exports = function(app) {
                                 };
                             });
 
-                            if (langugae && repoScore) {
+                            if (repoScore) {
                                 console.log(`${language}: ${repoScore}`);
                             }
                             
