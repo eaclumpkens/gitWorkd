@@ -48,11 +48,9 @@ module.exports = function(app) {
                             
 
                             Object.entries(loggedUser.dataValues).forEach(([key, value]) => {
-                                if (key !== languages[b]) {
-                                    continue;
-                                } else {
+                                if (key === languages[b]) {
                                     console.log(`${key}: ${value}`);
-                                }
+                                };
                             })
                             
 
