@@ -7,32 +7,37 @@ const {
 } = require('uuid');
 
 var myRepos = [];
-var similarRepos = [];
+var otherRepos = [];
 
 module.exports = function(app) {
 
     app.get("/main", (req, res) => {
-
+        // get current user
         if (req.cookies.uuid) {
             db.User.findOne({
                 where: {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
-
+                // pull userid
                 var id = loggedUser.id;
 
                 db.Repo.findAll({}).then((allRepos) => {
 
                     for (var i = 0; i < allRepos.length; i++) {
 
-                        
+                        // pull NONE current user repos
                         if (id !== allRepos[i].dataValues.UserId) {
-                            console.log(allRepos[i].dataValues);
-                        };
+                            otherRepos.push(allRepos[i].dataValues);
+                        } else {
+                            myRepos.push(allRepos[i].dataValues);
+                        }
                         
-                        
-                    }
+                    };
+                    console.log("MY REPOSITORIES!!!!!!!!!!!!!!")
+                    console.log(myRepos);
+                    console.log("OTHER REPOSITORIES!!!!!!!!!!!!!!")
+                    console.log(otherRepos);
 
                 })
 
