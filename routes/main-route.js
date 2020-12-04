@@ -56,8 +56,6 @@ module.exports = function(app) {
                         };
                     };
 
-                    console.log(otherRepos);
-
                     // pull language keys 
                     var keys = Object.keys(otherRepos[0]);
                     var languages = [];
@@ -78,7 +76,7 @@ module.exports = function(app) {
                         var repoData = {
                             repoName: otherRepos[a].title,
                             description: otherRepos[a].description,
-                            languages: function() {A
+                            languages: function() {
 
                                 var languages = [];
 
