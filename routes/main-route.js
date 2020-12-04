@@ -29,7 +29,7 @@ module.exports = function(app) {
                     }
                 }).then((userRepos) => {
 
-                    myRepos.push(userRepos.data);
+                    myRepos.push(userRepos);
                     console.log(myRepos);
 
                 })
