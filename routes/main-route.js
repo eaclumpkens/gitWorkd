@@ -59,46 +59,17 @@ module.exports = function(app) {
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
-                        var userId = otherRepos.UserId;
+                        var repos = [];
+                        var repoData = {};
 
-                        var repoData = {
-                            repoName: otherRepos[a].title,
-                            description: otherRepos[a].description,
-                            languages: function() {
-
-                                var languages = [];
-
-                                // pull language keys 
-                                var keys = Object.keys(otherRepos[a]);
-                                var languages = [];
-
-                                for (var x = 0; x < keys.length; x++) {
-                                    if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
-                                        continue;
-                                    } else {
-                                        languages.push(keys[x]);
-                                    }
-                                };
-
-                                for (var b = 0; b < languages.length; b++) {
-                                    // iterate through repo lang bytes
-                                    Object.entries(otherRepos[a]).forEach(([key, value]) => {
-                                        var obj = {};
-                                        if (key === languages[b]) {
-                                            if (value !== null) {
-                                                obj[`${key}`] = `${value}`;
-                                                languages.push(obj);
-                                            };
-                                        };
-                                    });
-
-                                };
-
-                                return languages;
+                        Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                            if (value !== null) {
+                                    repoData[`${key}`] = `${value}`;
+                                    repos.push(obj);
                             }
-                        };
+                        });
 
-                        console.log(repoData.languages);
+                        console.log(repos);
                     };
 
                     
