@@ -28,8 +28,19 @@ module.exports = function(app) {
                         };
                     };
 
+
                     var keys = Object.keys(otherRepos[0]);
-                    console.log(keys);
+                    var newKeys;
+
+                    for (var x = 0; x < keys.length; x++) {
+                        if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
+                            continue;
+                        } else {
+                            newKeys.push(keys[x]);
+                        }
+                    };
+
+                    console.log(newKeys);
 
                     // loop through repos and compare user langs
                     for (var a = 0; a < otherRepos.length; a++) {
