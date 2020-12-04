@@ -39,7 +39,6 @@ module.exports = function(app) {
                         }
                     };
 
-                    console.log(loggedUser.dataValues);
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
                         var compScore = 0;
@@ -48,13 +47,13 @@ module.exports = function(app) {
                         for (var b = 0; b < languages.length; b++) {
                             
 
-                            for (const [key, value] of Object.entries(loggedUser.dataValues)) {
-
-                                if (key === languages[b]) {
-                                    console.table(key, value)
+                            Object.entries(loggedUser.dataValues).forEach(([key, value]) => {
+                                if (key !== languages[b]) {
+                                    continue;
+                                } else {
+                                    console.log(`${key}: ${value}`);
                                 }
-
-                            }
+                            })
                             
 
 
