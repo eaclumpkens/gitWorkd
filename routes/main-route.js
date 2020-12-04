@@ -38,16 +38,17 @@ module.exports = function(app) {
                             languages.push(keys[x]);
                         }
                     };
-
+                    console.log(languages)
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
                         var compScore = 0;
 
                         // iterate through language keys
                         for (var b = 0; b < languages.length; b++) {
+                            var language  = languages[b];
 
-                            console.log(languages[b]);
-                            console.log(loggedUser.languages[b]);
+                            console.log(language);
+                            console.log(loggedUser.language);
 
 
                         }
