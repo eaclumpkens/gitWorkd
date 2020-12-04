@@ -29,19 +29,16 @@ module.exports = function(app) {
                     };
                 });
 
-                // pull language names
-                var keys = Object.keys(otherRepos[0]);
-                    for (var k = 0; k < keys.length; k++) {
-                        console.log(keys[k]);
-                }
-
                 // loop through repos and compare user langs
                 for (var a = 0; a < otherRepos.length; a++) {
                     var compScore = 0;
 
 
 
-                    
+                    var keys = Object.keys(otherRepos[0]);
+                    for (var k = 0; k < keys.length; k++) {
+                        console.log(keys[k]);
+                    }
 
                 }
 
