@@ -39,25 +39,25 @@ module.exports = function(app) {
                         }
                     };
 
-                    
+                    // iterate through repos
+                    for (var a = 0; a < otherRepos.length; a++) {
+                        var compScore = 0;
 
-                    // iterate through language keys
-                    for (var b = 0; b < languages.length; b++) {
-                        
+                        // iterate through language keys
+                        for (var b = 0; b < languages.length; b++) {
+                            
 
-                        Object.entries(loggedUser.dataValues).forEach(([key, value]) => {
-                            if (key === languages[b]) {
-                                console.log(`${key}: ${value}`);
-                            };
+                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                                if (key === languages[b]) {
+                                    console.log(`${key}: ${value}`);
+                                };
+                            });
+                            
 
-                            // iterate through repos
-                            for (var a = 0; a < otherRepos.length; a++) {
-                                var compScore = 0;
-                            };
 
-                        });
-                        
-
+                        }
+    
+    
                     };
 
                 });   
