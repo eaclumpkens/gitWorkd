@@ -1,4 +1,3 @@
-
 var path = require("path");
 var db = require("../models");
 var axios = require("axios");
@@ -20,7 +19,7 @@ module.exports = function(app) {
             }).then((loggedUser) => {
                 // pull userid
                 var id = loggedUser.id;
-            
+
                 // pull NONE current user repos
                 db.Repo.findAll({}).then((allRepos) => {
                     for (var i = 0; i < allRepos.length; i++) {
@@ -33,19 +32,19 @@ module.exports = function(app) {
                 // loop through repos and compare user langs
                 for (var a = 0; a < otherRepos.length; a++) {
                     var compScore = 0;
-
-                    
+                    var keys = Object.keys(otherRepos[a]);
+                    for (var k = 0; k < keys.length; k++) {
+                        console.log(keys[k]);
+                    }
 
                 }
 
             })
 
         }
-    
+
         res.redirect("/");
     })
 
 
 }
-
-
