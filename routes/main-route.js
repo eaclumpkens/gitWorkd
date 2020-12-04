@@ -22,6 +22,8 @@ module.exports = function(app) {
 
                 // pull NONE USER repos
                 db.Repo.findAll({}).then((allRepos) => {
+
+                    console.log(allRepos);
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
