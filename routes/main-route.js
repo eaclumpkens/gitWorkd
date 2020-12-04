@@ -24,11 +24,15 @@ module.exports = function(app) {
                 db.Repo.findAll({}).then((allRepos) => {
 
                     
+
+                    
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
                         };
                     };
+
+                    console.log(otherRepos);
 
                     
 
@@ -65,7 +69,7 @@ module.exports = function(app) {
                             });
 
                             if (repoScore) {
-                                console.log(`${language}: ${repoScore}`);
+                                /* console.log(`${language}: ${repoScore}`); */
                             }
                             
                         }
