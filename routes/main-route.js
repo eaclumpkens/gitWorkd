@@ -16,15 +16,15 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                var git = loggedUser.githubId;
+                var id = loggedUser.id;
                 
                 db.Repos.findEach({
                     where: {
-                        githubId: git
+                        UserId: id
                     }
                 }).then((userRepos) => {
 
-                    myRepos.push(userRepos.data);
+                    myRepos.push(userRepos);
                     console.log(myRepos);
 
                 })
@@ -38,3 +38,5 @@ module.exports = function(app) {
 
 
 }
+
+
