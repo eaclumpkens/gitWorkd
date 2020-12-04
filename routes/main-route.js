@@ -6,6 +6,7 @@ const {
 } = require('uuid');
 
 var otherRepos = [];
+var keys;
 
 module.exports = function(app) {
 
@@ -27,13 +28,14 @@ module.exports = function(app) {
                             otherRepos.push(allRepos[i].dataValues);
                         };
                     };
+
+                    keys = Object.keys(otherRepos[0]);
                 });
 
                 // loop through repos and compare user langs
                 for (var a = 0; a < otherRepos.length; a++) {
                     var compScore = 0;
 
-                    var keys = Object.keys(otherRepos[0]);
                     console.log(keys);
 
 
