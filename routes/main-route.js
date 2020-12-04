@@ -14,7 +14,7 @@ module.exports = function(app) {
         // get current user
         if (req.cookies.uuid) {
             db.User.findOne({
-                where: {A
+                where: {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
