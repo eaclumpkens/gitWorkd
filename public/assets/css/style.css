@@ -116,6 +116,10 @@ h5{
     color: white;
 }
 
+.animate__animated.animate__fadeIn {
+    --animate-duration: 2s;
+  }
+
 
 
 .add-btn{
