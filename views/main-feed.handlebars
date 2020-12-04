@@ -16,25 +16,25 @@
     <div class="row mt-3">
         <div class="col-sm-3">
             <div class="card user-card animate__animated animate__fadeIn">
-                <img src="{{image path of user}}" class="card-img-top" alt="Picture of user">
+                <img src="https://brobible.com/wp-content/uploads/2019/11/istock-153696622.jpg?resize=650,433" class="card-img-top" alt="Picture of user">
                 <div class="card-body">
-                    <h3 class="card-title user-name text-center"><i class="fab fa-github mr-1"></i>{{github username of logged in user}}</h3>
+                    <h3 class="card-title user-name text-center"><i class="fab fa-github mr-1"></i>Name of user</h3>
                 </div>
-                <ul class="list-group list-group-flush text-center">
+                {{!-- <ul class="list-group list-group-flush text-center">
                     <li class="list-group-item">{{Number of repos user has posted}}</li>
                     <li class="list-group-item">{{Most used/preferred language of user}}</li>
                     <li class="list-group-item">{{Member Since..?}}</li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
         <div class="col-sm-8">
-            {{#each repo}}
+            {{#each repos}}
                 <div class="row">
                     <div class="col-sm-10 mx-auto repo-card card text-center animate__animated animate__fadeIn">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h2 class="card-title">{{Repo title goes here}}</h4>
+                                    <h2 class="card-title">{{title}}</h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -42,7 +42,7 @@
                                     <h5><i class="fab fa-github"></i> Author</h5>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <h6>{{github username}}</h6>
+                                            <h6>{{username}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                     <h5><i class="fas fa-layer-group"></i> Technologies</h5>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <h6>{{Technologies...}}</h6>
+                                            <h6>{{tech}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     <h5><i class="fas fa-people-arrows"></i> Compatibility</h5>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <h6 class="compat">{{compatibility rating}}</h6>
+                                            <h6 class="compat">{{compat}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -66,8 +66,8 @@
 
                             <div class="row">
                                 <div class="col-sm-12 mt-3">
-                                    <button class="btn btn-outline-light btn-sm mr-3 save-repo" data-id={{id of repo}}>Save Repo</button>
-                                    <a href="{{link to repo}}" class="btn btn-outline-light btn-sm">View Repo</a>
+                                    <button class="btn btn-outline-light btn-sm mr-3 save-repo">Save Repo</button>
+                                    <a href="{{link}}" class="btn btn-outline-light btn-sm">View Repo</a>
                                     {{!-- {{Change button to a tag that links to github repo?}} --}} 
                                 </div>
                             </div>
