@@ -58,7 +58,7 @@ module.exports = function(app) {
                                 };
                             });
 
-                            console.log(repoScore);
+                            console.log(`${languages[b]} ${repoScore}`);
                             
                         }
     
