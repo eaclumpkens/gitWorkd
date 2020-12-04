@@ -116,9 +116,7 @@ h5{
     color: white;
 }
 
-.user-name{
-    color: black;
-}
+
 
 .animate__animated.animate__fadeIn {
     --animate-duration: 2s;
@@ -133,5 +131,9 @@ h5{
 
 .card-title{
     color: white;
+}
+
+.user-name{
+    color: black;
 }
 
