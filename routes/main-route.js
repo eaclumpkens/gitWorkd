@@ -45,15 +45,20 @@ module.exports = function(app) {
 
                         // iterate through language keys
                         for (var b = 0; b < languages.length; b++) {
+
+                            var userScore;
+                            var repoScore;
                             
-                            // iterate through repo language values
+                            // iterate through repo lang bytes
                             Object.entries(otherRepos[a]).forEach(([key, value]) => {
                                 if (key === languages[b]) {
-                                    if (value !== null) {
-                                        console.log(`${key}: ${value}`);
-                                    }
+                                    if (value) {
+                                        repoScore = value;
+                                    };
                                 };
                             });
+
+                            console.log(repoScore);
                             
                         }
     
