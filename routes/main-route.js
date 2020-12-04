@@ -27,7 +27,9 @@ module.exports = function(app) {
                     for (var i = 0; i < allRepos.length; i++) {
 
                         
-                        console.log(allRepos[i].dataValues.UserId);
+                        if (id !== allRepos[i].dataValues.UserId) {
+                            console.log(allRepos[i].dataValues);
+                        };
                         
                         
                     }
