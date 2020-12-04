@@ -50,10 +50,13 @@ module.exports = function(app) {
                             Object.entries(otherRepos[a]).forEach(([key, value]) => {
                                 if (key === languages[b]) {
                                     if (value !== null) {
-                                        repoScore = value;
-                                    };
+                                        
+                                        // iterate through user lang bytes
+                                        for (var c = 0; c < loggedUser.dataValues.length; c++) {
 
-                                    console.log(`${languages[b]} ${repoScore}`);
+                                            console.log(loggedUser.dataValues[c]);
+                                        };
+                                    };
                                 };
                             });
 
