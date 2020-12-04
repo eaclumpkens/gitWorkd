@@ -9,7 +9,6 @@ module.exports = function(app) {
     app.get("/main", (req, res) => {
 
         if (req.cookies.uuid) {
-
             db.User.findOne({
                 where: {
                     cookie: req.cookies.uuid
@@ -17,6 +16,7 @@ module.exports = function(app) {
             }).then((loggedUser) => {
 
                 var id = loggedUser.id;
+                console.log(id);
                 
                 db.Repos.findEach({
                     where: {
