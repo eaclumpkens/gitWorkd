@@ -78,7 +78,7 @@ module.exports = function(app) {
                         var repoData = {
                             repoName: otherRepos[a].title,
                             description: otherRepos[a].description,
-                            languages: function() {
+                            languages: function() {A
 
                                 var languages = [];
 
