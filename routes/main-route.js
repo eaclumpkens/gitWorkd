@@ -1,4 +1,3 @@
-
 var path = require("path");
 var db = require("../models");
 var axios = require("axios");
@@ -6,7 +5,6 @@ const {
     v4: uuidv4
 } = require('uuid');
 
-var myRepos = [];
 var otherRepos = [];
 
 module.exports = function(app) {
@@ -22,33 +20,62 @@ module.exports = function(app) {
                 // pull userid
                 var id = loggedUser.id;
 
+                // pull NONE USER repos
                 db.Repo.findAll({}).then((allRepos) => {
-
                     for (var i = 0; i < allRepos.length; i++) {
-
-                        // pull NONE current user repos
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
-                        } else {
-                            myRepos.push(allRepos[i].dataValues);
-                        }
-                        
+                        };
                     };
-                    console.log("MY REPOSITORIES!!!!!!!!!!!!!!")
-                    console.log(myRepos);
-                    console.log("OTHER REPOSITORIES!!!!!!!!!!!!!!")
-                    console.log(otherRepos);
 
-                })
+                    // pull language keys 
+                    var keys = Object.keys(otherRepos[0]);
+                    var languages = [];
+                    for (var x = 0; x < keys.length; x++) {
+                        if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
+                            continue;
+                        } else {
+                            languages.push(keys[x]);
+                        }
+                    };
 
+                    // iterate through repos
+                    for (var a = 0; a < otherRepos.length; a++) {
+                        var compScore = 0;
+
+                        // iterate through language keys
+                        for (var b = 0; b < languages.length; b++) {
+
+                            var language;
+                            var repoScore;
+                            
+                            // iterate through repo lang bytes
+                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                                if (key === languages[b]) {
+                                    if (value !== null) {
+                                        
+                                        language = languages[b];
+                                        repoScore = value;
+                                    };
+                                };
+                            });
+
+                            if (repoScore) {
+                                console.log(`${language}: ${repoScore}`);
+                            }
+                            
+                        }
+    
+    
+                    };
+
+                });   
             })
 
         }
-    
+
         res.redirect("/");
     })
 
 
 }
-
-
