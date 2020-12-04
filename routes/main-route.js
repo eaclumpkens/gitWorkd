@@ -20,7 +20,7 @@ module.exports = function(app) {
                 // pull userid
                 var id = loggedUser.id;
 
-                // pull NONE current user repos
+                // pull NONE USER repos
                 db.Repo.findAll({}).then((allRepos) => {
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
@@ -28,23 +28,29 @@ module.exports = function(app) {
                         };
                     };
 
-                    // pull language keys
+                    // pull language keys 
                     var keys = Object.keys(otherRepos[0]);
-                    var newKeys = [];
-
+                    var languages = [];
                     for (var x = 0; x < keys.length; x++) {
                         if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
                             continue;
                         } else {
-                            newKeys.push(keys[x]);
+                            languages.push(keys[x]);
                         }
                     };
 
-                    console.log(newKeys);
-
-                    // loop through repos and compare user langs
+                    // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
                         var compScore = 0;
+
+                        // iterate through language keys
+                        for (var b = 0; b < languages.length; b++) {
+
+                            console.log(languages[b]);
+                            console.log(loggedUser.languages[b]);
+
+
+                        }
     
     
                     };
