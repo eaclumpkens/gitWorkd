@@ -18,7 +18,7 @@ module.exports = function(app) {
 
                 var git = loggedUser.githubId;
                 
-                db.Repos.findEach({
+                db.Repo.findEach({
                     where: {
                         githubId: git
                     }
