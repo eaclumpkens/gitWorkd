@@ -20,16 +20,10 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                var id = loggedUser.id;
-                console.log(id);
                 
-                db.Repo.findAll({
-                    where: {
-                        UserId: id
-                    }
-                }).then((userRepos) => {
+                db.Repo.findAll({}).then((allRepos) => {
 
-                    console.log(userRepos);
+                    console.log(allRepos);
 
                 })
 
