@@ -98,7 +98,7 @@ module.exports = function(app) {
                             }
                         };
 
-                        console.log(repoData);
+                        console.log(repoData.languages);
                     };
 
                     
