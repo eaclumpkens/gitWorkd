@@ -6,7 +6,6 @@ const {
     v4: uuidv4
 } = require('uuid');
 
-var myRepos = [];
 var otherRepos = [];
 
 module.exports = function(app) {
@@ -21,25 +20,23 @@ module.exports = function(app) {
             }).then((loggedUser) => {
                 // pull userid
                 var id = loggedUser.id;
-
+            
+                // pull NONE current user repos
                 db.Repo.findAll({}).then((allRepos) => {
-
                     for (var i = 0; i < allRepos.length; i++) {
-
-                        // pull NONE current user repos
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
-                        } else {
-                            myRepos.push(allRepos[i].dataValues);
-                        }
-                        
+                        };
                     };
-                    console.log("MY REPOSITORIES!!!!!!!!!!!!!!")
-                    console.log(myRepos);
-                    console.log("OTHER REPOSITORIES!!!!!!!!!!!!!!")
-                    console.log(otherRepos);
+                });
 
-                })
+                // loop through repos and compare user langs
+                for (var a = 0; a < otherRepos.length; a++) {
+                    var compScore = 0;
+
+                    
+
+                }
 
             })
 
