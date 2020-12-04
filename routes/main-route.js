@@ -23,7 +23,7 @@ module.exports = function(app) {
                 var id = loggedUser.id;
                 console.log(id);
                 
-                db.Repo.findEach({
+                db.Repo.findAll({
                     where: {
                         UserId: id
                     }
