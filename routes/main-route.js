@@ -20,10 +20,11 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
 
-                
+                var id = loggedUser.id;
+
                 db.Repo.findAll({}).then((allRepos) => {
 
-                    console.log(allRepos);
+                    console.log(allRepos.Repo);
 
                 })
 
