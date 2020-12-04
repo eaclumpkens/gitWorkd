@@ -39,7 +39,7 @@ module.exports = function(app) {
                         }
                     };
 
-                    console.log(loggedUser);
+                    console.log(loggedUser.dataValues);
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
                         var compScore = 0;
@@ -49,7 +49,7 @@ module.exports = function(app) {
                             var language  = languages[b];
 
                             console.log(language);
-                            console.log(loggedUser.dataValues.language);
+                            
 
 
                         }
