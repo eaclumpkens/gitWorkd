@@ -28,9 +28,9 @@ module.exports = function(app) {
                         };
                     };
 
-
+                    // pull language keys
                     var keys = Object.keys(otherRepos[0]);
-                    var newKeys;
+                    var newKeys = [];
 
                     for (var x = 0; x < keys.length; x++) {
                         if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
