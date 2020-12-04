@@ -1,7 +1,7 @@
 
 var db = require("../models");
 
-var userRepos = [];
+var myRepos = [];
 var similarRepos = [];
 
 module.exports = function(app) {
@@ -17,7 +17,17 @@ module.exports = function(app) {
             }).then((loggedUser) => {
 
                 var git = loggedUser.githubId;
-                console.log(git);
+                
+                db.Repos.findEach({
+                    where: {
+                        githubId: git
+                    }
+                }).then((userRepos) => {
+
+                    myRepos.push(userRepos);
+                    console.log(myRepos);
+
+                })
 
             })
 
