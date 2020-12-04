@@ -24,7 +24,9 @@ module.exports = function(app) {
 
                 db.Repo.findAll({}).then((allRepos) => {
 
-                    console.log(allRepos);
+                    for (var i = 0; i < allRepos.length; i++) {
+                        console.log(allRepos[i]);
+                    }
 
                 })
 
