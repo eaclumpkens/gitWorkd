@@ -54,7 +54,7 @@ module.exports = function(app) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
                         };
-                    };A
+                    };
 
                     console.log(otherRepos);
 
