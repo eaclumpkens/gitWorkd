@@ -24,7 +24,7 @@ module.exports = function(app) {
                     }
                 }).then((userRepos) => {
 
-                    myRepos.push(userRepos);
+                    myRepos.push(userRepos.data);
                     console.log(myRepos);
 
                 })
