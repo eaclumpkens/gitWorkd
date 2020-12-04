@@ -50,9 +50,6 @@ module.exports = function(app) {
                 // pull NONE USER repos
                 db.Repo.findAll({}).then((allRepos) => {
 
-                    
-
-                    
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
@@ -61,45 +58,49 @@ module.exports = function(app) {
 
                     console.log(otherRepos);
 
-                    
-
                     // pull language keys 
-                    var keys = Object.keys(otherRepos[0]);
-                    var languages = [];
-                    for (var x = 0; x < keys.length; x++) {
-                        if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
-                            continue;
-                        } else {
-                            languages.push(keys[x]);
-                        }
-                    };
+                    // var keys = Object.keys(otherRepos[0]);
+                    // var languages = [];
+
+                    // for (var x = 0; x < keys.length; x++) {
+                    //     if (keys[x] === 'id' || keys[x] === 'title' || keys[x] === 'description' || keys[x] === 'githubId' || keys[x] === 'createdAt' || keys[x] === 'updatedAt' || keys[x] === 'UserId') {
+                    //         continue;
+                    //     } else {
+                    //         languages.push(keys[x]);
+                    //     }
+                    // };
 
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
-                        var compScore = 0;
+
+                        console.log(otherRepos[a]);
+
+
+
 
                         // iterate through language keys
-                        for (var b = 0; b < languages.length; b++) {
+                        // for (var b = 0; b < languages.length; b++) {
 
-                            var language;
-                            var repoScore;
+                        //     var language;
+                        //     var repoScore;
                             
-                            // iterate through repo lang bytes
-                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
-                                if (key === languages[b]) {
-                                    if (value !== null) {
+                        //     // iterate through repo lang bytes
+                        //     Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                        //         if (key === languages[b]) {
+                        //             if (value !== null) {
                                         
-                                        language = languages[b];
-                                        repoScore = value;
-                                    };
-                                };
-                            });
+                        //                 language = languages[b];
+                        //                 repoScore = value;
+                        //             };
+                        //         };
+                        //     });
 
-                            if (repoScore) {
-                                /* console.log(`${language}: ${repoScore}`); */
-                            }
+
+                        //     if (repoScore) {
+                        //         console.log(`${language}: ${repoScore}`); 
+                        //     };
                             
-                        }
+                        // }
     
     
                     };
