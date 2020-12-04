@@ -65,7 +65,7 @@ module.exports = function(app) {
                         Object.entries(otherRepos[a]).forEach(([key, value]) => {
                             if (value !== null) {
                                     repoData[`${key}`] = `${value}`;
-                                    repos.push(obj);
+                                    repos.push(repoData);
                             }
                         });
 
