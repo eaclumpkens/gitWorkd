@@ -30,7 +30,7 @@ module.exports = function(app) {
                         };
                     };
 
-                    console.log(otherRepos);
+                    
 
                     // pull language keys 
                     var keys = Object.keys(otherRepos[0]);
