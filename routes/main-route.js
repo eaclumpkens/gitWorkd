@@ -25,13 +25,10 @@ module.exports = function(app) {
                 db.Repo.findAll({}).then((allRepos) => {
 
                     for (var i = 0; i < allRepos.length; i++) {
+
                         
+                        console.log(allRepos[i].dataValues);
                         
-                        if (allRepos[i].dataValues.UserId = id) {
-                            continue;
-                        } else {
-                            console.log(allRepos[i].dataValues);
-                        }
                         
                     }
 
