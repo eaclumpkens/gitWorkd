@@ -30,9 +30,27 @@ var mockRepos = [{
         link: "https://www.google.com"
     },
 
-]
+];
+
+var allLangs = {};
 
 module.exports = function(app) {
+
+    var langs = fs.readFileSync("./languages.txt", {
+        encoding: 'utf8',
+        flag: 'r'
+    });
+    var langarray = langs.split("\n");
+
+    for (var i = 0; i < langarray.length; i++) {
+        var lang = langarray[i];
+        lang = lang.replace(/\./g, "_");
+        if (lang == "") {
+            continue;
+        }
+        allLangs.push(lang);
+
+    }
 
     app.get("/main", (req, res) => {
 
@@ -92,6 +110,17 @@ module.exports = function(app) {
                                 repos.push(repoToPopulate);
                                 reposCounted++;
                                 if (reposCounted == totalRepos) {
+                                    for (var w = 0; w < repos.length; w++) {
+                                        var techs = [];
+                                        for (const Langkey in allLangs) {
+                                            for (const repoKey in repos[w]) {
+                                                if (Langkey == repoKey) {
+                                                    techs.push(repoKey);
+                                                }
+                                            }
+                                        }
+                                        repos[w].tech = techs.join(", ");
+                                    }
                                     console.log(repos);
                                 }
                             });
