@@ -99,14 +99,17 @@ module.exports = function(app) {
 
                                 repos.push(repoData);
                                 console.log(repoData);
+
+
+                                axios.get(consts.GITHUB_REPO_URL, header).then((git) => {
+
+                                    console.log(git);
+                                })
+
+
                             })
-
                         });
-                        
-                        
-                        
                     };
-
                 });   
             });
         };
