@@ -217,7 +217,7 @@ module.exports = function(app) {
                 var totalRepos = dbSavedRepos.length;
                 var reposCounted = 0;
 
-                var getRepoData = (repoId) {
+                var getRepoData = (repoId) => {
                     axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
 
                     });
