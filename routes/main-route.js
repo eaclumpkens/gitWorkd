@@ -90,7 +90,7 @@ module.exports = function(app) {
                                 }
                             }
 
-                            // get username
+                            // get user data
                             axios.get(consts.GITHUB_USER_URL, header).then((user) => {
 
                                 repoData["username"] = `${user.data.login}`;
