@@ -128,6 +128,7 @@ module.exports = function(app) {
                                             }
                                         }
                                         repos[w].tech = techs.join(", ");
+                                        repos[w].compat = Math.round(Math.random() * 100) + "%";
                                     }
                                     res.render("main-feed", {
                                         repos: repos
