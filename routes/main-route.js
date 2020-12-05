@@ -113,7 +113,7 @@ module.exports = function(app) {
                                 repoToPopulate["username"] = `${repoFromGithub.data.owner.login}`;
                                 repoToPopulate["avatar_url"] = `${repoFromGithub.data.owner.avatar_url}`;
                                 repoToPopulate["github_url"] = `${repoFromGithub.data.owner.html_url}`;
-                                repoToPopulate["repo_url"] = `${repoFromGithub.data.url}`
+                                repoToPopulate["repo_url"] = `${repoFromGithub.data.html_url}`
 
                                 repos.push(repoToPopulate);
                                 reposCounted++;
