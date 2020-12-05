@@ -59,6 +59,7 @@ module.exports = function(app) {
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
+                            console.log(allRepos[i].dataValues.id);
                         };
                     };
 
