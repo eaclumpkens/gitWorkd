@@ -173,7 +173,7 @@ module.exports = function(app) {
                     cookie: req.cookies.uuid
                 }
             }).then((loggedUser) => {
-                db.savedRepos.findOrCreate({
+                db.SavedRepos.findOrCreate({
                     where: {
                         UserId: loggedUser.dataValues.id,
                         RepoId: repoToSave
