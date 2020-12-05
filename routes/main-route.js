@@ -130,8 +130,18 @@ module.exports = function(app) {
                                         repos[w].tech = techs.join(", ");
                                         repos[w].compat = Math.round(Math.random() * 100) + "%";
                                     }
-                                    res.render("main-feed", {
-                                        repos: repos
+                                    axios.get(consts.GITHUB_USER_URL, header).then((currentUser) => {
+                                        var userToSend = {
+                                            pic: currentUser.data.avatar_url,
+                                            repoCount: currentUser.data.public_repos,
+                                            since: currentUser.data.created_at,
+                                            name: currentUser.data.login
+                                        };
+
+                                        res.render("main-feed", {
+                                            repos: repos,
+                                            user: userToSend
+                                        });
                                     });
                                 }
                             });
