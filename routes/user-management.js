@@ -113,11 +113,11 @@
                         }
                     }).then((dbReturn) => {
                         db.User.update({
+                            accessToken: access_token
+                        }, {
                             where: {
                                 githubId: gitUser.data.id
                             }
-                        }, {
-                            accessToken: access_token
                         }).then((dbupdateToke) => {
                             console.log("updateToken");
                         });
