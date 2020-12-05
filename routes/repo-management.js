@@ -218,13 +218,21 @@ module.exports = function(app) {
                 var reposCounted = 0;
 
                 var getRepoData = (repoId) => {
-                    axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
+                    var repoUrl = consts.GITHUB_REPO_BY_ID + repoId;
+                    console.log(repoUrl);
+                    axios.get(repoUrl, header).then((repoInfo) => {
 
                     });
                 }
                 console.log(dbSavedRepos);
                 for (var i = 0; i < dbSavedRepos.length; i++) {
-                    //getRepoData(dbSavedRepos[i].dataValues.RepoId)
+                    db.Repos.findOne({
+                        where: {
+                            id: dbSavedRepos[i].dataValues.RepoId
+                        }
+                    }).then((dbRepo) => {
+                        getRepoData(dbRepo.dataValues.githubId);
+                    });
                 }
             });
         });
