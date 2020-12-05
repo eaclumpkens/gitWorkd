@@ -102,13 +102,11 @@ module.exports = function(app) {
 
                                 axios.get(consts.GITHUB_REPO_URL, header).then((git) => {
 
-                                    repoData["repo_url"] = `${git.html_url}`;
+                                    repoData["repo_url"] = `${git.data.html_url}`;
                                     
                                     repos.push(repoData);
                                     console.log(repoData);
                                 })
-
-
                             })
                         });
                     };
