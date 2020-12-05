@@ -113,10 +113,10 @@ module.exports = function(app) {
                                 if (reposCounted == totalRepos) {
                                     for (var w = 0; w < repos.length; w++) {
                                         var techs = [];
-                                        for (const Langkey in allLangs) {
+                                        for (var z = 0; z < allLangs.length; z++) {
                                             for (const repoKey in repos[w]) {
-                                                console.log(`${repoKey} vs ${Langkey}`);
-                                                if (Langkey === repoKey) {
+                                                console.log(`${repoKey} vs ${allLangs[z]}`);
+                                                if (allLangs[z] === repoKey) {
                                                     techs.push(repoKey);
                                                 }
                                             }
