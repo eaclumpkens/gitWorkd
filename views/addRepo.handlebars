@@ -1,0 +1,79 @@
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand main-nav" href="#">GitWorkd</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="/main"><i class="fas fa-comment-alt"></i> Feed</a>
+          <a class="nav-link" href="/savedRepos"><i class="fas fa-archive"></i> Saved Repos</a>
+          <a class="nav-link" href="/addRepo"><i class="fas fa-plus-square"></i> Add Repos</a>
+        </div>
+      </div>
+    </nav>
+
+<div class="container">
+
+        <div class="row">
+          <div class="col-sm-5 mx-auto text-center submit-div animate__animated animate__fadeIn">
+            <div class="jumbotron jumbotron-fluid add-jumbo">
+              <div class="container">
+                <h3>Add Your Repos</h3>
+                <p class="instr">To add your repos to the main feed, simply select the repos you want and then press submit.</p>
+                <button id="submitRepos" class="btn btn-outline-light btn-lg btn-block">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        {{#each repos}}
+        <div class="row repoDiv" data-id={{id}}>
+            <div class="col-sm-10 mx-auto repo-card2 card text-center animate__animated animate__fadeIn ">
+                <div class="card-body">
+                    <div class="row sibling">
+                        <div class="col-sm-12">
+                            <h2 class="card-title">{{name}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5><i class="fab fa-github"></i> Description</h5>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {{#if description}}
+                                    <h6>{{description}}</h6>
+                                    {{else}}
+                                    <h6>No Description Available</h6>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5><i class="fas fa-layer-group"></i> Technologies</h5>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {{#if language}}
+                                    <h6>{{language}}</h6>
+                                    {{else}}
+                                    <h6>No Language Available</h6>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-sm-12 mt-3">
+                            <button class="btn btn-outline-light btn-sm mr-3 select">Select
+                                Repo</button>
+                                <button class="btn btn-outline-light btn-sm mr-3 deselect">Deselect
+                                Repo</button>
+                            <a href="{{url}}" class="btn btn-outline-light btn-sm">View Repo</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>

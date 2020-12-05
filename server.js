@@ -28,9 +28,12 @@ function Main() {
 
     require("./routes/html-routes.js")(app);
     require("./routes/user-management.js")(app);
+    require("./routes/repo-management.js")(app);
+    require("./routes/user-repos.js")(app);
+    require("./routes/main-route.js")(app);
 
     db.sequelize.sync({
-        force: true
+        force: false
     }).then(function() {
         app.listen(PORT, function() {
             console.log("App listening on PORT " + PORT);

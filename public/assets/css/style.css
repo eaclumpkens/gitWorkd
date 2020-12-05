@@ -4,6 +4,20 @@
     border-radius: 1rem;
 }
 
+.add-jumbo{
+    background-color: black;
+    color: white;
+    margin-top: 4rem;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+.user-card{
+    margin-top: 15px;
+}
+
+
+
 .logo{
     font-family: 'Permanent Marker', cursive;
     color: black;
@@ -15,6 +29,7 @@ body{
     background: url("../img/ponder.jpg") no-repeat center center fixed;
     background-size: cover;
     color: black;
+    font-family: 'Big Shoulders Inline Text', cursive;
     
 }
 
@@ -22,6 +37,11 @@ body{
     font-size: 25px;
     margin-left: 5px;
 }
+
+.instr{
+    color:grey;
+}
+
 
 p{
     color: rgb(19, 14, 14);
@@ -48,5 +68,92 @@ p{
     color: rgb(214, 197, 197);
     transform: scale(1.1);
     background-color: rgb(51, 49, 48);
+}
+
+
+.bg-dark{
+    background-color: rgb(0, 0, 0) !important;
+}
+
+a{
+    color: white !important;
+}
+
+a:hover{
+    color: grey !important;
+}
+
+.main-nav{
+    font-family: 'Permanent Marker', cursive;
+    color: white !important;
+}
+
+
+.loader{
+    display:none; 
+    margin: 2rem auto;
+    background-color: rgb(0, 0, 0);
+
+}
+
+.loader-image{
+    background-color: rgb(0, 0, 0);
+    width: 40px;
+}
+
+.add-card{
+    color: rgb(158, 153, 153);
+    margin-top: 12rem;
+    background-color: rgb(0, 0, 0);
+    border: solid 1px rgb(228, 215, 215);
+}
+
+.repo-card{
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.959);
+    color: grey;
+    border: 1px solid white;
+    /* border-radius: 1rem; */
+}
+
+
+
+.repo-card2{
+    margin-top: 2rem;
+    background-color: rgba(0, 0, 0, 0.959);
+    color: grey;
+    border: 1px solid white;
+    /* border-radius: 1rem; */
+}
+
+
+
+h5{
+    color: white;
+}
+
+
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: 2s;
+  }
+
+
+
+.add-btn{
+    background-color: rgba(0, 0, 0, 0.459);
+    color: white;
+}
+
+.card-title{
+    color: white;
+}
+
+.user-name{
+    color: black;
+}
+
+.table-dark{
+    background-color: black;
 }
 

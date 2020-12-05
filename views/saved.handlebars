@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand main-nav" href="#">GitWorkd</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="/main"><i class="fas fa-comment-alt"></i> Feed</a>
+          <a class="nav-link" href="/savedRepos"><i class="fas fa-archive"></i> Saved Repos</a>
+          <a class="nav-link" href="/addRepo"><i class="fas fa-plus-square"></i> Add Repos</a>
+        </div>
+      </div>
+    </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 mx-auto mt-5 animate__animated animate__fadeIn">
+            <table class="table table-hover table-dark table-sm text-center">
+              <thead>
+                <tr>
+                  <th scope="col"><i class="fas fa-book-open ml-3"></i> Title</th>
+                  <th scope="col"><i class="fab fa-github mr-1"></i>Author</th>
+                  <th scope="col"><i class="fas fa-eye"></i> View</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each repos}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{author}}</td>
+                  <td><a href="{{url}}" class="btn btn-sm btn-outline-light">View Repository</a></td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+  
