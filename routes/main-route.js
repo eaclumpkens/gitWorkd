@@ -78,7 +78,7 @@ module.exports = function(app) {
                         });
 
                         // get user data
-                        var userUrl = `${consts.GITHUB_USER_URL}/${repoData.userId}`;
+                        var userUrl = `${consts.GITHUB_USER_URL}/${repoData.UserId}`;
                         console.log(userUrl);
                         axios.get(userUrl).then((user) => {
 
