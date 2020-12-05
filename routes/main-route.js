@@ -76,25 +76,27 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;
                             }
                         });
+
+                        // get user data
                         db.User.findOne({
                             where: {
                                 id: userId
                             }
                         }).then((result) => {
-                                // get user data
-                                var userUrl = `${consts.GITHUB_USER_URL}/${results.githubId}`;
-                                console.log(userUrl);
-                                axios.get(userUrl).then((user) => {
+                            var userUrl = `${consts.GITHUB_USER_URL}/${result.githubId}`;
+                            console.log(userUrl);
+                            axios.get(userUrl).then((user) => {
 
-                                    repoData["username"] = `${user.data.login}`;
-                                    repoData["avatar_url"] = `${user.data.avatar_url}`;
-                                    repoData["github_url"] = `${user.data.html_url}`;
-                                    repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
+                                repoData["username"] = `${user.data.login}`;
+                                repoData["avatar_url"] = `${user.data.avatar_url}`;
+                                repoData["github_url"] = `${user.data.html_url}`;
+                                repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
 
-                                    repos.push(repoData);
-                                })
-                            };
+                                repos.push(repoData);
+                            });
                         });
+                    };
+
                 });
             });
         };
