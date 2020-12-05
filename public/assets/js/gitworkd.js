@@ -46,10 +46,11 @@ $("#submitRepos").on("click", function() {
 
 $(".save-repo").on("click", function() {
     var repoId = $(this).closest("repo-card").attr("data-repoId");
+    var repoObj = {
+        repoId: repoId
+    }
     $.ajax("/api/saveRepo", {
-        data: {
-            repoId: repoId
-        },
+        data: repoObj,
         method: "POST"
     }).then((res) => {
         console.log("SAVED REPO!!!!");
