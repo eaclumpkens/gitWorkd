@@ -97,13 +97,15 @@ module.exports = function(app) {
                                 repoData["avatar_url"] = `${user.data.avatar_url}`;
                                 repoData["github_url"] = `${user.data.html_url}`;
 
-                                repos.push(repoData);
-                                console.log(repoData);
+                                
 
 
                                 axios.get(consts.GITHUB_REPO_URL, header).then((git) => {
 
-                                    console.log(git);
+                                    repoData["repo_url"] = `${git.html_url}`;
+                                    
+                                    repos.push(repoData);
+                                    console.log(repoData);
                                 })
 
 
