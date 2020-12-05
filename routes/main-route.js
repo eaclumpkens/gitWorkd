@@ -137,7 +137,7 @@ module.exports = function(app) {
                                             since: currentUser.data.created_at.substring(0, currentUser.data.created_at.indexOf("-")),
                                             name: currentUser.data.login
                                         };
-
+                                        console.log(repos[0]);
                                         res.render("main-feed", {
                                             repos: repos,
                                             user: userToSend
