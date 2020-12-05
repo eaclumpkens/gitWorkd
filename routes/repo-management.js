@@ -217,11 +217,23 @@ module.exports = function(app) {
                 var totalRepos = dbSavedRepos.length;
                 var reposCounted = 0;
 
+                var reposToSend = [];
                 var getRepoData = (repoId) => {
                     var repoUrl = consts.GITHUB_REPO_BY_ID + repoId;
                     console.log(repoUrl);
                     axios.get(repoUrl, header).then((repoInfo) => {
-
+                        var repoToPass = {
+                            author: repoInfo.data.owner.login,
+                            name: repoInfo.data.name,
+                            url: repoInfo.data.html_url
+                        }
+                        repoToSend.push(repoToPass);
+                        reposCounted++;
+                        if (totalRepos == reposCounted) {
+                            res.render("saved", {
+                                repos: repoToSend
+                            })
+                        }
                     });
                 }
                 console.log(dbSavedRepos);
