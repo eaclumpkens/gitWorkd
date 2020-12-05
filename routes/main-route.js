@@ -57,6 +57,8 @@ module.exports = function(app) {
                 // pull NONE USER repos
                 db.Repo.findAll({}).then((allRepos) => {
 
+                    var repos = [];
+
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
@@ -66,7 +68,7 @@ module.exports = function(app) {
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
-                        var repos = [];
+                        
                         var repoData = {};
 
                         var userId = otherRepos[a].UserId;
@@ -101,15 +103,14 @@ module.exports = function(app) {
                                 repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
 
                                 repos.push(repoData);
-                                
-                                console.log(repos)
+                    
                             })
 
                         });
                         
                     };
 
-
+                    console.log(repos)
 
                 });   
             });
