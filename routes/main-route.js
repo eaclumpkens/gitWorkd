@@ -57,10 +57,6 @@ module.exports = function(app) {
 
         var otherRepos = [];
 
-        res.render("main-feed", {
-            repos: mockRepos
-        });
-
         // get current user
         if (req.cookies.uuid) {
             db.User.findOne({
@@ -122,7 +118,9 @@ module.exports = function(app) {
                                         }
                                         repos[w].tech = techs.join(", ");
                                     }
-                                    console.log(repos);
+                                    res.render("main-feed", {
+                                        repos: repos
+                                    });
                                 }
                             });
                         };
