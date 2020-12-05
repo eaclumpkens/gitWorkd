@@ -6,6 +6,7 @@ const {
 } = require('uuid');
 
 const consts = require("../utils/consts");
+const userRepos = require("./user-repos");
 
 var mockRepos = [{
         title: "Eat-Da-Burger",
@@ -77,7 +78,9 @@ module.exports = function(app) {
                         });
 
                         // get user data
-                        axios.get(`${consts.GITHUB_USER_URL}/${repoData.userId}`).then((user) => {
+                        var userUrl = `${consts.GITHUB_USER_URL}/${repoData.userId}`;
+                        console.log(userUrl);
+                        axios.get(userUrl).then((user) => {
 
                             repoData["username"] = `${user.data.login}`;
                             repoData["avatar_url"] = `${user.data.avatar_url}`;
