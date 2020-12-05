@@ -112,6 +112,15 @@
                             cookieCreated: cookieCreationDate
                         }
                     }).then((dbReturn) => {
+                        db.User.update({
+                            where: {
+                                githubId: gitUser.data.id
+                            }
+                        }, {
+                            accessToken: access_token
+                        }).then((dbupdateToke) => {
+                            console.log("updateToken");
+                        });
                         res.cookie("uuid", dbReturn[0].dataValues.cookie, {
                             maxAge: consts.MAX_LOGIN_TIME
                         });
