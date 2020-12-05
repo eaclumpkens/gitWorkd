@@ -9,30 +9,6 @@ const {
 const consts = require("../utils/consts");
 const userRepos = require("./user-repos");
 
-var mockRepos = [{
-        title: "Eat-Da-Burger",
-        username: "nickelme",
-        tech: "JavaScript, Handlebars, MySQL",
-        compat: "100%",
-        link: "https://www.google.com"
-    },
-    {
-        title: "Note Taker",
-        username: "eaclumpkens",
-        tech: "JavaScript, Handlebars, MySQL",
-        compat: "90%",
-        link: "https://www.google.com"
-    },
-    {
-        title: "Random Repo",
-        username: "twkirkpatrick",
-        tech: "JavaScript, Handlebars, MySQL",
-        compat: "80%",
-        link: "https://www.google.com"
-    },
-
-];
-
 var allLangs = [];
 
 module.exports = function(app) {
