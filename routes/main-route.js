@@ -75,6 +75,7 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;  
                             }
 
+                            console.log(otherRepo[a]);
                         });
 
                         // pull user data
@@ -97,19 +98,10 @@ module.exports = function(app) {
                                 repoData["avatar_url"] = `${user.data.avatar_url}`;
                                 repoData["github_url"] = `${user.data.html_url}`;
 
-                                
-                                console.log(user.data.login);
-                                console.log(otherRepos[a]);
-
-                                axios.get(consts.GITHUB_REPO_URL, {
-                                    owner: `${user.data.login}`,
-                                    repo: `${otherRepos[a].name}`
-                                }).then((git) => {
-                                    // repoData["repo_url"] = `${git.data.html_url}`;
                                     
-                                    repos.push(repoData);
-                                    // console.log(repoData);
-                                })
+                                repos.push(repoData);
+                                console.log(repoData);
+
                             })
                         });
                     };
