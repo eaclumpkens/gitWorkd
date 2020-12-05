@@ -56,7 +56,7 @@ module.exports = function(app) {
     app.get("/main", (req, res) => {
 
         var otherRepos = [];
-        if (!req.cookie.uuid) {
+        if (!req.cookies.uuid) {
             res.redirect("/");
         }
         // get current user
