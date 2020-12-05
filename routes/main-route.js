@@ -68,12 +68,9 @@ module.exports = function(app) {
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
-                        
                         var repoData = {};
-
                         var userId = otherRepos[a].UserId;
 
-                        
                         // pull none null fields
                         Object.entries(otherRepos[a]).forEach(([key, value]) => {
                             if (value !== null) {
@@ -110,7 +107,7 @@ module.exports = function(app) {
                         
                     };
 
-                    console.log(repos)
+                    console.log(otherRepos)
 
                 });   
             });
