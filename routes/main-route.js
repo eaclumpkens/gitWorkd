@@ -63,7 +63,8 @@ module.exports = function(app) {
                     };
 
                     var repos = [];
-
+                    var totalRepos = otherRepos.length;
+                    var reposCounted = 0;
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
@@ -78,22 +79,20 @@ module.exports = function(app) {
                         });
 
                         // get user data
-                        db.User.findOne({
-                            where: {
-                                id: userId
+                        var repoUrl = `${consts.GITHUB_REPO_URL}${repoData.githubId}`;
+                        console.log(repoUrl);
+                        axios.get(repoUrl).then((repoFromGithub) => {
+
+                            repoData["username"] = `${repoFromGithub.data.owner.login}`;
+                            repoData["avatar_url"] = `${repoFromGithub.data.owner.avatar_url}`;
+                            repoData["github_url"] = `${repoFromGithub.data.owner.html_url}`;
+                            repoData["repo_url"] = `${repoFromGithub.data.url}`
+
+                            repos.push(repoData);
+                            reposCounted++;
+                            if (reposCounted == totalRepos) {
+                                console.log(repos);
                             }
-                        }).then((result) => {
-                            var userUrl = `${consts.GITHUB_USER_URL}/${result.githubId}`;
-                            console.log(userUrl);
-                            axios.get(userUrl).then((user) => {
-
-                                repoData["username"] = `${user.data.login}`;
-                                repoData["avatar_url"] = `${user.data.avatar_url}`;
-                                repoData["github_url"] = `${user.data.html_url}`;
-                                repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
-
-                                repos.push(repoData);
-                            });
                         });
                     };
 
