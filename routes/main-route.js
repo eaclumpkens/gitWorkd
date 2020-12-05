@@ -75,7 +75,7 @@ module.exports = function(app) {
                             }
                         }).then((result) => {
 
-                            console.log(result.dataValues);
+                            console.log(result.dataValues.githubId);
 
 
                         })
