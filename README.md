@@ -52,20 +52,20 @@ No tests are set up for Gitworkd at this time.  Feel free to write tests or sear
 ## Questions
 If you have any further questions, feel free to reach out to us! <br>
 
-**Alex**
-<a href='https://www.github.com/Nickelme'>Github</a> 
+**Alex** <br>
+<a href='https://www.github.com/Nickelme'>Github</a> <br>
 <a href='mailto:twk4491@gmail.com'>alex@gmail.com</a> 
 
-**Christine**
-<a href='https://www.github.com/cmoorelvt'>Github</a> 
+**Christine** <br>
+<a href='https://www.github.com/cmoorelvt'>Github</a> <br>
 <a href='mailto:cmoorelvt@gmail.com'>cmoorelvt@gmail.com</a> 
 
-**Elisabeth** 
-<a href='https://www.github.com/eaclumpkens'>Github</a>
+**Elisabeth** <br>
+<a href='https://www.github.com/eaclumpkens'>Github</a> <br>
 <a href='mailto:eaclumpkens@gmail.com'>eaclumpkens@gmail.com</a> 
 
-**Tanner**
-<a href='https://www.github.com/twkirkpatrick'>Github</a> 
+**Tanner** <br>
+<a href='https://www.github.com/twkirkpatrick'>Github</a> <br>
 <a href='mailto:twk4491@gmail.com'>twk4491@gmail.com</a> 
 
 
