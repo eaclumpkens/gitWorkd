@@ -84,29 +84,20 @@ module.exports = function(app) {
                             axios.get(consts.GITHUB_USER_URL, header).then((user) => {
                                 var username = user.data.login;
                                 repoData["username"] = `${username}`;
-
                             })
-
-                            // pull none null fields
-                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
-                                if (value !== null) {
-                                        repoData[`${key}`] = `${value}`;
-                                        
-                                }
-                            });
-
-                            repos.push(repoData);
                         })
                         
+                        // pull none null fields
+                        Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                            if (value !== null) {
+                                    repoData[`${key}`] = `${value}`;  
+                            }
+                        });
                         
-                        
+                        repos.push(repoData);
                         console.log(repos);
                     };
 
-                    
-    
-    
-                    
                 });   
             });
         };
