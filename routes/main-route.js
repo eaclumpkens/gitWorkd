@@ -101,7 +101,7 @@ module.exports = function(app) {
 
 
                                 axios.get(consts.GITHUB_REPO_URL, header).then((git) => {
-
+                                    console.log(git);
                                     repoData["repo_url"] = `${git.data.html_url}`;
                                     
                                     repos.push(repoData);
