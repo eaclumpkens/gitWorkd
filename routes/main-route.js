@@ -134,7 +134,7 @@ module.exports = function(app) {
                                         var userToSend = {
                                             pic: currentUser.data.avatar_url,
                                             repoCount: currentUser.data.public_repos,
-                                            since: currentUser.data.created_at,
+                                            since: currentUser.data.created_at.substring(0, currentUser.data.indexOf("-")),
                                             name: currentUser.data.login
                                         };
 
