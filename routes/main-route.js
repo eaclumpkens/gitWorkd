@@ -92,14 +92,16 @@ module.exports = function(app) {
 
                             // get username
                             axios.get(consts.GITHUB_USER_URL, header).then((user) => {
-                                var username = user.data.login;
-                                repoData["username"] = `${username}`;
+
+                                repoData["username"] = `${user.data.login}`;
+                                repoData["avatar_url"] = `${user.data.avatar_url}`;
+                                repoData["github_url"] = `${user.data.html_url}`;
 
                                 repos.push(repoData);
-                                console.log(user.data);
+                                console.log(repoData);
                             })
 
-                        })
+                        });
                         
                         
                         
