@@ -54,7 +54,7 @@ If you have any further questions, feel free to reach out to us! <br>
 
 **Alex** <br>
 <a href='https://www.github.com/Nickelme'>Github</a> <br>
-<a href='mailto:twk4491@gmail.com'>alex@gmail.com</a> 
+<a href='mailto:nickelbot5.3@gmail.com'>nickelbot5.3@gmail.com</a> 
 
 **Christine** <br>
 <a href='https://www.github.com/cmoorelvt'>Github</a> <br>
