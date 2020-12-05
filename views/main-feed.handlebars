@@ -5,7 +5,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="/feed"><i class="fas fa-comment-alt"></i> Feed</a>
+          <a class="nav-link" href="/main"><i class="fas fa-comment-alt"></i> Feed</a>
           <a class="nav-link" href="/savedRepos"><i class="fas fa-archive"></i> Saved Repos</a>
           <a class="nav-link" href="/addRepo"><i class="fas fa-plus-square"></i> Add Repos</a>
         </div>
@@ -16,21 +16,20 @@
     <div class="row mt-3">
         <div class="col-sm-3 user-card">
             <div class="card animate__animated animate__fadeIn">
-                <img src="https://brobible.com/wp-content/uploads/2019/11/istock-153696622.jpg?resize=650,433" class="card-img-top" alt="Picture of user">
+                <img src="{{user.pic}}" class="card-img-top" alt="Picture of user">
                 <div class="card-body">
-                    <h3 class="card-title user-name text-center"><i class="fab fa-github mr-1"></i>Harold</h3>
+                    <h3 class="card-title user-name text-center"><i class="fab fa-github mr-1"></i>{{user.name}}</h3>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item">Number of Repos: 5</li>
-                    <li class="list-group-item">Preferred Language: JavaScript</li>
-                    <li class="list-group-item">Member Since: 2020</li>
+                    <li class="list-group-item">Number of Repos: {{user.repoCount}}</li>
+                    <li class="list-group-item">Member Since: {{user.since}}</li>
                 </ul>
             </div>
         </div>
         <div class="col-sm-8">
             {{#each repos}}
                 <div class="row">
-                    <div class="col-sm-10 mx-auto repo-card card text-center animate__animated animate__fadeIn">
+                    <div class="col-sm-10 mx-auto repo-card card text-center animate__animated animate__fadeIn" data-repoId={{id}}>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12">

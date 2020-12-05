@@ -164,4 +164,89 @@ module.exports = function(app) {
             }
         });
     });
+
+    app.post("/api/saveRepo", (req, res) => {
+        var repoToSave = req.body.repoId;
+        console.log(req.body);
+        if (req.cookies.uuid) {
+            db.User.findOne({
+                where: {
+                    cookie: req.cookies.uuid
+                }
+            }).then((loggedUser) => {
+                db.SavedRepos.findOrCreate({
+                    where: {
+                        UserId: loggedUser.dataValues.id,
+                        RepoId: repoToSave
+                    }
+                }).then((dbReturn) => {
+                    if (dbReturn[1]) {
+                        res.status(200);
+                        res.send("Saved Repo");
+                    } else {
+                        res.status(200);
+                        res.send("Repo already exists");
+                    }
+                });
+            });
+        }
+    });
+
+    app.get("/savedRepos", (req, res) => {
+        db.User.findOne({
+            where: {
+                cookie: req.cookies.uuid
+            }
+        }).then((loggedUser) => {
+            if (!loggedUser) {
+                res.redirect("/");
+                return;
+            }
+
+            var header = {
+                headers: {
+                    "Authorization": `token ${loggedUser.accessToken}`
+                }
+            }
+            db.SavedRepos.findAll({
+                where: {
+                    UserId: loggedUser.id
+                }
+            }).then((dbSavedRepos) => {
+
+                var totalRepos = dbSavedRepos.length;
+                var reposCounted = 0;
+
+                var reposToSend = [];
+                var getRepoData = (repoId) => {
+                    var repoUrl = consts.GITHUB_REPO_BY_ID + repoId;
+                    console.log(repoUrl);
+                    axios.get(repoUrl, header).then((repoInfo) => {
+                        var repoToPass = {
+                            author: repoInfo.data.owner.login,
+                            name: repoInfo.data.name,
+                            url: repoInfo.data.html_url
+                        }
+                        reposToSend.push(repoToPass);
+                        reposCounted++;
+                        if (totalRepos == reposCounted) {
+                            res.render("saved", {
+                                repos: reposToSend
+                            });
+                        }
+                    });
+                }
+                console.log(dbSavedRepos);
+                for (var i = 0; i < dbSavedRepos.length; i++) {
+                    db.Repo.findOne({
+                        where: {
+                            id: dbSavedRepos[i].dataValues.RepoId
+                        }
+                    }).then((dbRepo) => {
+                        getRepoData(dbRepo.dataValues.githubId);
+                    });
+                }
+            });
+        });
+    });
 }

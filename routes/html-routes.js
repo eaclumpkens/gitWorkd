@@ -29,9 +29,7 @@ module.exports = function(app) {
                         }
                     }
                     axios.get(consts.GITHUB_USER_URL, header).then((gitUser) => {
-                        console.log(gitUser.headers);
-                        res.status(200);
-                        res.send("Weclome back " + gitUser.data.name);
+                        res.redirect("/main");
                     }).catch((moo) => {
                         var linkurl = consts.SIGN_UP_URL + process.env.GITHUB_CLIENT_ID;
                         res.render("signup", {

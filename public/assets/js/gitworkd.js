@@ -43,3 +43,16 @@ $("#submitRepos").on("click", function() {
         alert("FAILED");
     });
 });
+
+$(".save-repo").on("click", function() {
+    var repoId = $(this).closest(".repo-card").attr("data-repoId");
+    var repoObj = {
+        repoId: repoId
+    }
+    $.ajax("/api/saveRepo", {
+        data: repoObj,
+        method: "POST"
+    }).then((res) => {
+        console.log("SAVED REPO!!!!");
+    })
+});
