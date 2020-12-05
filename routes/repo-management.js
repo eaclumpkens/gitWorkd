@@ -226,7 +226,7 @@ module.exports = function(app) {
                 }
                 console.log(dbSavedRepos);
                 for (var i = 0; i < dbSavedRepos.length; i++) {
-                    db.Repos.findOne({
+                    db.Repo.findOne({
                         where: {
                             id: dbSavedRepos[i].dataValues.RepoId
                         }
