@@ -61,11 +61,9 @@ module.exports = function(app) {
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
-                        
                         var repos = [];
                         var repoData = {};
 
-                        
                         var userId = otherRepos[a].UserId;
 
                         
@@ -73,7 +71,6 @@ module.exports = function(app) {
                         Object.entries(otherRepos[a]).forEach(([key, value]) => {
                             if (value !== null) {
                                 repoData[`${key}`] = `${value}`;  
-                                
                             }
                         });
 
@@ -96,10 +93,10 @@ module.exports = function(app) {
                                 repoData["username"] = `${user.data.login}`;
                                 repoData["avatar_url"] = `${user.data.avatar_url}`;
                                 repoData["github_url"] = `${user.data.html_url}`;
+                                repoData["repo_url"] = `https://github.com/${username.toLowerCase()}/${repoData.name}`
 
                                 repos.push(repoData);
                                 console.log(repoData);
-                                
 
                             })
 
