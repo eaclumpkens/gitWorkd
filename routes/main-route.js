@@ -147,7 +147,7 @@ module.exports = function(app) {
                                 }
                             });
                         };
-                         
+
                         getData(repoData);
                     };
 
