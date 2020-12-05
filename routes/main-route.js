@@ -65,6 +65,10 @@ module.exports = function(app) {
                 }
             }).then((loggedUser) => {
                 // pull userid
+                if (!loggedUser) {
+                    res.redirect("/");
+                    return;
+                }
                 var id = loggedUser.id;
 
                 // pull all repos
@@ -97,7 +101,12 @@ module.exports = function(app) {
                             // get user data
                             var repoUrl = `${consts.GITHUB_REPO_BY_ID}${repoToPopulate.githubId}`;
                             console.log(repoUrl);
-                            axios.get(repoUrl).then((repoFromGithub) => {
+                            var header = {
+                                headers: {
+                                    "Authorization": `token ${loggedUser.dataValues.accessToken}`
+                                }
+                            }
+                            axios.get(repoUrl, header).then((repoFromGithub) => {
 
                                 repoToPopulate["username"] = `${repoFromGithub.data.owner.login}`;
                                 repoToPopulate["avatar_url"] = `${repoFromGithub.data.owner.avatar_url}`;
