@@ -67,7 +67,6 @@ module.exports = function(app) {
 
                         // pull user data
                         var userId = otherRepos[a].UserId;
-                        var username;
 
                         db.User.findOne({
                             where: {
@@ -75,22 +74,32 @@ module.exports = function(app) {
                             }
                         }).then((result) => {
 
-                            console.log(result.dataValues.githubId);
+                            var header = {
+                                headers: {
+                                    "Authorization": `token ${result.dataValues.accessToken}`
+                                }
+                            }
 
+                            // get username
+                            axios.get(consts.GITHUB_USER_URL, header).then((user) => {
+                                var username = user.data.login;
+                                repoData["username"] = `${username}`;
 
+                            })
+
+                            // pull none null fields
+                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                                if (value !== null) {
+                                        repoData[`${key}`] = `${value}`;
+                                        
+                                }
+                            });
+
+                            repos.push(repoData);
                         })
                         
                         
-                        // pull none null fields
-                        Object.entries(otherRepos[a]).forEach(([key, value]) => {
-                            if (value !== null) {
-                                    repoData[`${key}`] = `${value}`;
-                                    repos.push(repoData);
-                            }
-                        });
-
-
-
+                        
                         console.log(repos);
                     };
 
