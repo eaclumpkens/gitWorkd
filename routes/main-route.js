@@ -66,7 +66,7 @@ module.exports = function(app) {
                         var repoData = {};
 
                         // pull user data
-                        var userId = otherRepos.UserId;
+                        var userId = otherRepos[a].UserId;
                         var username;
 
                         db.User.findOne({
