@@ -78,23 +78,25 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;
                             }
                         });
+                        var getData = (repoToPopulate) => {
+                            // get user data
+                            var repoUrl = `${consts.GITHUB_REPO_BY_ID}${repoToPopulate.githubId}`;
+                            console.log(repoUrl);
+                            axios.get(repoUrl).then((repoFromGithub) => {
 
-                        // get user data
-                        var repoUrl = `${consts.GITHUB_REPO_BY_ID}${repoData.githubId}`;
-                        console.log(repoUrl);
-                        axios.get(repoUrl).then((repoFromGithub) => {
+                                repoToPopulate["username"] = `${repoFromGithub.data.owner.login}`;
+                                repoToPopulate["avatar_url"] = `${repoFromGithub.data.owner.avatar_url}`;
+                                repoToPopulate["github_url"] = `${repoFromGithub.data.owner.html_url}`;
+                                repoToPopulate["repo_url"] = `${repoFromGithub.data.url}`
 
-                            repoData["username"] = `${repoFromGithub.data.owner.login}`;
-                            repoData["avatar_url"] = `${repoFromGithub.data.owner.avatar_url}`;
-                            repoData["github_url"] = `${repoFromGithub.data.owner.html_url}`;
-                            repoData["repo_url"] = `${repoFromGithub.data.url}`
-
-                            repos.push(repoData);
-                            reposCounted++;
-                            if (reposCounted == totalRepos) {
-                                console.log(repos);
-                            }
-                        });
+                                repos.push(repoToPopulate);
+                                reposCounted++;
+                                if (reposCounted == totalRepos) {
+                                    console.log(repos);
+                                }
+                            });
+                        };
+                        getData(repoData);
                     };
 
                 });
