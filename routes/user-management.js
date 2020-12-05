@@ -126,11 +126,12 @@
                         });
                         res.status(200);
                         if (dbReturn[1]) {
-                            console.log("Created New User");
-                            res.send("Welcome new User: " + gitUser.data.name);
+                            setTimeout(() => {
+                                res.redirect("/main");
+                            }, 2000);
                             populateUserScores(dbReturn[0].dataValues);
                         } else {
-                            res.send("Weclome back " + gitUser.data.name);
+                            res.redirect("/main");
                         }
                     });
                 });
