@@ -164,4 +164,30 @@ module.exports = function(app) {
             }
         });
     });
+
+    app.post("/api/saveRepo", (req, res) => {
+        var repoToSave = req.body.repoId;
+        if (req.cookies.uuid) {
+            db.User.findOne({
+                where: {
+                    cookie: req.cookies.uuid
+                }
+            }).then((loggedUser) => {
+                db.savedRepos.findOrCreate({
+                    where: {
+                        UserId: loggedUser.dataValues.id,
+                        RepoId: repoToSave
+                    }
+                }).then((dbReturn) => {
+                    if (dbReturn[1]) {
+                        res.status(200);
+                        res.send("Saved Repo");
+                    } else {
+                        res.status(200);
+                        res.send("Repo already exists");
+                    }
+                });
+            });
+        }
+    });
 }

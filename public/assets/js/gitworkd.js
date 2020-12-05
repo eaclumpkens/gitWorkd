@@ -1,3 +1,5 @@
+const repo = require("../../../models/repo");
+
 var reposToAdd = [];
 
 $(".select").on("click", function() {
@@ -42,4 +44,16 @@ $("#submitRepos").on("click", function() {
         console.log("Failed to add to DB");
         alert("FAILED");
     });
+});
+
+$(".save-repo").on("click", function() {
+    var repoId = $(this).closest("repo-card").attr("data-repoId");
+    $.ajax("/api/saveRepo", {
+        data: {
+            repoId: repoId
+        },
+        method: "POST"
+    }).then((res) => {
+        console.log("SAVED REPO!!!!");
+    })
 });
