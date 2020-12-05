@@ -33,7 +33,7 @@ var mockRepos = [{
 
 ];
 
-var allLangs = {};
+var allLangs = [];
 
 module.exports = function(app) {
 
