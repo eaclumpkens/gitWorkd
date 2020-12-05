@@ -79,7 +79,7 @@ module.exports = function(app) {
                         });
 
                         // get user data
-                        var repoUrl = `${consts.GITHUB_REPO_URL}${repoData.githubId}`;
+                        var repoUrl = `${consts.GITHUB_REPO_BY_ID}${repoData.githubId}`;
                         console.log(repoUrl);
                         axios.get(repoUrl).then((repoFromGithub) => {
 
