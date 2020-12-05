@@ -167,6 +167,7 @@ module.exports = function(app) {
 
     app.post("/api/saveRepo", (req, res) => {
         var repoToSave = req.body.repoId;
+        console.log(req.body);
         if (req.cookies.uuid) {
             db.User.findOne({
                 where: {
