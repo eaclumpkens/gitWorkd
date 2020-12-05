@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 
-    var Repo = sequelize.define("Repo", colData);
+    var Repo = sequelize.define("SavedRepos", colData);
 
     Repo.associate = function(models) {
         // We're saying that a Post should belong to an Author
