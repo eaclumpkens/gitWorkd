@@ -36,11 +36,6 @@ var mockRepos = [
 
 module.exports = function(app) {
 
-    function pullData () {
-
-
-    };
-
     app.get("/main", (req, res) => {
 
         res.render("main-feed", {repos: mockRepos});
@@ -100,14 +95,12 @@ module.exports = function(app) {
                                 repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
 
                                 repos.push(repoData);
-                    
+                                console.log(repos);
                             })
 
                         });
                         
                     };
-
-                    console.log(otherRepos)
 
                 });   
             });
