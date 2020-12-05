@@ -75,6 +75,8 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;  
                             }
 
+
+                            console.log(otherRepos[a]);
                         });
 
                         // pull user data
@@ -98,11 +100,8 @@ module.exports = function(app) {
                                 repoData["github_url"] = `${user.data.html_url}`;
 
                                 repos.push(repoData);
-                                // console.log(repoData);
+                                console.log(repoData);
                                 
-
-                                console.log(otherRepos[a].name);
-
 
                             })
 
