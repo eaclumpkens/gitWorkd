@@ -10,8 +10,6 @@ const {
 const consts = require("../utils/consts");
 const repo = require("../models/repo");
 
-var allLangs = {};
-
 // Routes
 // =============================================================
 module.exports = function(app) {
