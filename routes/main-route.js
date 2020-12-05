@@ -7,8 +7,6 @@ const {
 
 const consts = require("../utils/consts");
 
-var otherRepos = [];
-
 var mockRepos = [
     {
         title: "Eat-Da-Burger",
@@ -38,7 +36,10 @@ module.exports = function(app) {
 
     app.get("/main", (req, res) => {
 
+        var otherRepos = [];
+
         res.render("main-feed", {repos: mockRepos});
+
         // get current user
         if (req.cookies.uuid) {
             db.User.findOne({
@@ -49,16 +50,17 @@ module.exports = function(app) {
                 // pull userid
                 var id = loggedUser.id;
 
-                // pull NONE USER repos
+                // pull all repos
                 db.Repo.findAll({}).then((allRepos) => {
 
-                    var repos = [];
-
+                     // pull NONE USER repos
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
                         };
                     };
+
+                    var repos = [];
 
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
@@ -95,7 +97,6 @@ module.exports = function(app) {
                                 repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
 
                                 repos.push(repoData);
-                                console.log(repos);
                             })
 
                         });
