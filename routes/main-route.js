@@ -7,8 +7,7 @@ const {
 
 const consts = require("../utils/consts");
 
-var mockRepos = [
-    {
+var mockRepos = [{
         title: "Eat-Da-Burger",
         username: "nickelme",
         tech: "JavaScript, Handlebars, MySQL",
@@ -29,7 +28,7 @@ var mockRepos = [
         compat: "80%",
         link: "https://www.google.com"
     },
-    
+
 ]
 
 module.exports = function(app) {
@@ -38,7 +37,9 @@ module.exports = function(app) {
 
         var otherRepos = [];
 
-        res.render("main-feed", {repos: mockRepos});
+        res.render("main-feed", {
+            repos: mockRepos
+        });
 
         // get current user
         if (req.cookies.uuid) {
@@ -53,7 +54,7 @@ module.exports = function(app) {
                 // pull all repos
                 db.Repo.findAll({}).then((allRepos) => {
 
-                     // pull NONE USER repos
+                    // pull NONE USER repos
                     for (var i = 0; i < allRepos.length; i++) {
                         if (id !== allRepos[i].dataValues.UserId) {
                             otherRepos.push(allRepos[i].dataValues);
@@ -71,39 +72,23 @@ module.exports = function(app) {
                         // pull none null fields
                         Object.entries(otherRepos[a]).forEach(([key, value]) => {
                             if (value !== null) {
-                                repoData[`${key}`] = `${value}`;  
+                                repoData[`${key}`] = `${value}`;
                             }
                         });
 
-                        // pull user data
-                        db.User.findOne({
-                            where: {
-                                id: userId
-                            }
-                        }).then((result) => {
+                        // get user data
+                        axios.get(`${consts.GITHUB_USER_URL}/${repoData.userId}`).then((user) => {
 
-                            var header = {
-                                headers: {
-                                    "Authorization": `token ${result.dataValues.accessToken}`
-                                }
-                            }
+                            repoData["username"] = `${user.data.login}`;
+                            repoData["avatar_url"] = `${user.data.avatar_url}`;
+                            repoData["github_url"] = `${user.data.html_url}`;
+                            repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
 
-                            // get user data
-                            axios.get(consts.GITHUB_USER_URL, header).then((user) => {
-
-                                repoData["username"] = `${user.data.login}`;
-                                repoData["avatar_url"] = `${user.data.avatar_url}`;
-                                repoData["github_url"] = `${user.data.html_url}`;
-                                repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.title}`
-
-                                repos.push(repoData);
-                            })
-
-                        });
-                        
+                            repos.push(repoData);
+                        })
                     };
 
-                });   
+                });
             });
         };
     });
