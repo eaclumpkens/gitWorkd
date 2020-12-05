@@ -1,5 +1,3 @@
-const repo = require("../../../models/repo");
-
 var reposToAdd = [];
 
 $(".select").on("click", function() {
