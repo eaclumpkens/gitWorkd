@@ -75,34 +75,33 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;  
                             }
 
-                            // pull user data
-                            db.User.findOne({
-                                where: {
-                                    id: userId
+                        });
+
+                        // pull user data
+                        db.User.findOne({
+                            where: {
+                                id: userId
+                            }
+                        }).then((result) => {
+
+                            var header = {
+                                headers: {
+                                    "Authorization": `token ${result.dataValues.accessToken}`
                                 }
-                            }).then((result) => {
-    
-                                var header = {
-                                    headers: {
-                                        "Authorization": `token ${result.dataValues.accessToken}`
-                                    }
-                                }
-    
-                                // get username
-                                axios.get(consts.GITHUB_USER_URL, header).then((user) => {
-                                    var username = user.data.login;
-                                    console.log(username);
-                                    repoData["username"] = `${username}`;
-                                })
-                            
-                            
+                            }
+
+                            // get username
+                            axios.get(consts.GITHUB_USER_URL, header).then((user) => {
+                                var username = user.data.login;
+                                repoData["username"] = `${username}`;
+
+                                repos.push(repoData);
+                                console.log(repos);
                             })
 
-
-                        });
+                        })
                         
-                        repos.push(repoData);
-                        console.log(repos);
+                        
                         
                     };
 
