@@ -93,7 +93,7 @@ module.exports = function(app) {
                                 repoData["username"] = `${user.data.login}`;
                                 repoData["avatar_url"] = `${user.data.avatar_url}`;
                                 repoData["github_url"] = `${user.data.html_url}`;
-                                repoData["repo_url"] = `https://github.com/${username.toLowerCase()}/${repoData.name}`
+                                repoData["repo_url"] = `https://github.com/${user.data.login.toLowerCase()}/${repoData.name}`
 
                                 repos.push(repoData);
                                 console.log(repoData);
