@@ -227,12 +227,12 @@ module.exports = function(app) {
                             name: repoInfo.data.name,
                             url: repoInfo.data.html_url
                         }
-                        repoToSend.push(repoToPass);
+                        reposToSend.push(repoToPass);
                         reposCounted++;
                         if (totalRepos == reposCounted) {
                             res.render("saved", {
-                                repos: repoToSend
-                            })
+                                repos: reposToSend
+                            });
                         }
                     });
                 }
