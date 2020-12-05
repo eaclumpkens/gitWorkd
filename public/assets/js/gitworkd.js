@@ -28,6 +28,7 @@ $(".deselect").on("click", function() {
 });
 
 $("#submitRepos").on("click", function() {
+    $("#submitRepos").attr("disable", "disable");
     var reposToSend = {
         Repos: reposToAdd
     }
@@ -36,7 +37,9 @@ $("#submitRepos").on("click", function() {
         method: "POST"
     }).done((res) => {
         console.log("Successfully added to DB");
+        window.location.href = location.origin + "/main"
     }).fail((err) => {
         console.log("Failed to add to DB");
+        alert("FAILED");
     });
 });
