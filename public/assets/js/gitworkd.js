@@ -2,7 +2,7 @@ var reposToAdd = [];
 
 $(".select").on("click", function() {
 
-    $(this).closest(".repo-card").css("background-color", "rgba(0, 128, 0, 0.5)");
+    $(this).closest(".repo-card2").css("background-color", "rgba(0, 128, 0, 0.5)");
 
     var repoTitle = $(this).closest(".repoDiv").attr("data-id");
     console.log(repoTitle);
@@ -15,7 +15,7 @@ $(".select").on("click", function() {
 
 $(".deselect").on("click", function() {
 
-    $(this).closest(".repo-card").css("background-color", "black");
+    $(this).closest(".repo-card2").css("background-color", "black");
     var spliced = $(this).closest(".repoDiv").attr("data-id");
     var index = reposToAdd.indexOf(spliced);
     if (index < 0) {
