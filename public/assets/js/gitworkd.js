@@ -45,7 +45,7 @@ $("#submitRepos").on("click", function() {
 });
 
 $(".save-repo").on("click", function() {
-    var repoId = $(this).closest("repo-card").attr("data-repoId");
+    var repoId = $(this).closest(".repo-card").attr("data-repoId");
     var repoObj = {
         repoId: repoId
     }
