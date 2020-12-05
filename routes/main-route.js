@@ -5,6 +5,8 @@ const {
     v4: uuidv4
 } = require('uuid');
 
+const consts = require("../utils/consts");
+
 var otherRepos = [];
 
 var mockRepos = [
@@ -59,15 +61,35 @@ module.exports = function(app) {
                     // iterate through repos
                     for (var a = 0; a < otherRepos.length; a++) {
 
+                        
                         var repos = [];
                         var repoData = {};
 
+                        // pull user data
+                        var userId = otherRepos.UserId;
+                        var username;
+
+                        db.User.findOne({
+                            where: {
+                                id: userId
+                            }
+                        }).then((result) => {
+
+                            console.log(result);
+
+
+                        })
+                        
+                        
+                        // pull none null fields
                         Object.entries(otherRepos[a]).forEach(([key, value]) => {
                             if (value !== null) {
                                     repoData[`${key}`] = `${value}`;
                                     repos.push(repoData);
                             }
                         });
+
+
 
                         console.log(repos);
                     };

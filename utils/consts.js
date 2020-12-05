@@ -13,6 +13,6 @@ module.exports = {
 
 
 
-    //30 min * 60 secs * 1000ms to get 30min in ms
+    //30 min * 60 secs * 1000ms t   o get 30min in ms
     MAX_LOGIN_TIME: 30 * 60 * 1000
 }
