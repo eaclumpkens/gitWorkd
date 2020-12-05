@@ -98,11 +98,14 @@ module.exports = function(app) {
                                 repoData["github_url"] = `${user.data.html_url}`;
 
                                 
+                                console.log(user.data.login);
+                                console.log(otherRepos[a].name);
 
-
-                                axios.get(consts.GITHUB_REPO_URL, header).then((git) => {
-                                    console.log(git);
-                                    repoData["repo_url"] = `${git.data.html_url}`;
+                                axios.get(consts.GITHUB_REPO_URL, {
+                                    owner: `${user.data.login}`,
+                                    repo: `${otherRepos[a].name}`
+                                }).then((git) => {
+                                    // repoData["repo_url"] = `${git.data.html_url}`;
                                     
                                     repos.push(repoData);
                                     console.log(repoData);
