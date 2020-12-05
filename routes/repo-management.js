@@ -191,4 +191,42 @@ module.exports = function(app) {
             });
         }
     });
+
+    app.get("/savedRepos", (req, res) => {
+        db.User.findOne({
+            where: {
+                cookie: req.cookies.uuid
+            }
+        }).then((loggedUser) => {
+            if (!loggedUser) {
+                res.redirect("/");
+                return;
+            }
+
+            var header = {
+                headers: {
+                    "Authorization": `token ${loggedUser.accessToken}`
+                }
+            }
+            db.SavedRepos.findAll({
+                where: {
+                    UserId: loggedUser.id
+                }
+            }).then((dbSavedRepos) => {
+
+                var totalRepos = dbSavedRepos.length;
+                var reposCounted = 0;
+
+                var getRepoData = (repoId) {
+                    axios.get(consts.GITHUB_REPO_BY_ID + repoId, header).then((repoInfo) => {
+
+                    });
+                }
+                console.log(dbSavedRepos);
+                for (var i = 0; i < dbSavedRepos.length; i++) {
+                    //getRepoData(dbSavedRepos[i].dataValues.RepoId)
+                }
+            });
+        });
+    });
 }
