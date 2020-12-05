@@ -95,6 +95,8 @@ module.exports = function(app) {
                     "Authorization": `token ${loggedUser.accessToken}`
                 }
             }
+            var totalReposToAdd = repos.length;
+            var reposAddedSoFar = 0;
             for (var i = 0; i < repos.length; i++) {
                 console.log(repos[i]);
                 var addRepo = (repoId) => {
@@ -105,6 +107,11 @@ module.exports = function(app) {
                     }).then((dbRepo) => {
                         if (dbRepo) {
                             console.log("Cannot add " + dbRepo.githubId + " already exists");
+                            reposAddedSoFar++;
+                            if (reposAddedSoFar == totalReposToAdd) {
+                                res.status(204);
+                                res.send("");
+                            }
                             return;
                         } else {
                             console.log("adding repo" + repoId);
@@ -143,6 +150,11 @@ module.exports = function(app) {
                                 }
                                 db.Repo.create(repoEntry).then((repoEntered) => {
                                     console.log("Repo Successfully added");
+                                    reposAddedSoFar++;
+                                    if (reposAddedSoFar == totalReposToAdd) {
+                                        res.status(204);
+                                        res.send("");
+                                    }
                                 });
                             });
                         });
