@@ -96,7 +96,7 @@ module.exports = function(app) {
                                 repoData["username"] = `${username}`;
 
                                 repos.push(repoData);
-                                console.log(repos);
+                                console.log(user.data);
                             })
 
                         })
