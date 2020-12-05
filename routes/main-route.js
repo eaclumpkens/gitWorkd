@@ -85,17 +85,21 @@ module.exports = function(app) {
                                 var username = user.data.login;
                                 repoData["username"] = `${username}`;
                             })
+                        
+                        
+                            // pull none null fields
+                            Object.entries(otherRepos[a]).forEach(([key, value]) => {
+                                if (value !== null) {
+                                        repoData[`${key}`] = `${value}`;  
+                                }
+                            });
+                            
+                            repos.push(repoData);
+                            console.log(repos);
+                        
                         })
                         
-                        // pull none null fields
-                        Object.entries(otherRepos[a]).forEach(([key, value]) => {
-                            if (value !== null) {
-                                    repoData[`${key}`] = `${value}`;  
-                            }
-                        });
                         
-                        repos.push(repoData);
-                        console.log(repos);
                     };
 
                 });   
