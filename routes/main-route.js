@@ -99,7 +99,7 @@ module.exports = function(app) {
 
                                 
                                 console.log(user.data.login);
-                                console.log(otherRepos[a].name);
+                                console.log(otherRepos[a]);
 
                                 axios.get(consts.GITHUB_REPO_URL, {
                                     owner: `${user.data.login}`,
@@ -108,7 +108,7 @@ module.exports = function(app) {
                                     // repoData["repo_url"] = `${git.data.html_url}`;
                                     
                                     repos.push(repoData);
-                                    console.log(repoData);
+                                    // console.log(repoData);
                                 })
                             })
                         });
