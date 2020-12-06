@@ -1,5 +1,3 @@
-var myRepos = ['gitWorkd', 'eaclumpkens', 'restaurantApp'];
-
 var path = require("path");
 var db = require("../models");
 var axios = require("axios");
