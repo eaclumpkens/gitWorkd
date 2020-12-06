@@ -99,6 +99,7 @@ module.exports = function(app) {
                                 repoData[`${key}`] = `${value}`;
                             }
                         });
+
                         var getData = (repoToPopulate) => {
                             // get user data
                             var repoUrl = `${consts.GITHUB_REPO_BY_ID}${repoToPopulate.githubId}`;
@@ -146,6 +147,7 @@ module.exports = function(app) {
                                 }
                             });
                         };
+
                         getData(repoData);
                     };
 

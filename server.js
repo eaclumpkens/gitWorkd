@@ -32,6 +32,7 @@ function Main() {
     require("./routes/user-repos.js")(app);
     require("./routes/main-route.js")(app);
 
+
     db.sequelize.sync({
         force: false
     }).then(function() {
