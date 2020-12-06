@@ -1,7 +1,7 @@
 # Gitworkd
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge&logo=appveyor)  ![Database:mySQL](https://img.shields.io/badge/Database-MySQL-blue?style=for-the-badge&logo=appveyor) ![Backend:Node.js](https://img.shields.io/badge/Backend-Node.js-red?style=for-the-badge&logo=appveyor) ![Template Engine: Handlebars](https://img.shields.io/badge/Template%20Engine-Handlebars-brightgreen?style=for-the-badge&logo=appveyor)
 
-Gitworkd is a platform for hosting and exploring open source projects.  It is easy to get lost in the vast world of GitHub, so we thought it would be beneficial to create a centralized ground for users to post projects and applications that are exclusively open to collaboration.  Users are able to add their own GitHub repositories and explore repositories all within a simple and intuitive environment.
+Gitworkd is a platform for hosting and exploring open source projects.  It is easy to get lost in the vast world of GitHub, so we thought it would be beneficial to create a centralized ground for users to post projects and applications that are exclusively open to collaboration.  Users are able to explore repositories posted by other users, save those repositories, and add their own repositories all within a simple and intuitive environment.
 
 <img src="public/assets/img/media.png" alt="gitworkd screenshot">
 
